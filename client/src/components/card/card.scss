@@ -1,0 +1,120 @@
+@import "../../response.scss";
+.card{
+    display: flex;
+    gap: 20px;
+    @include sm{
+        flex-direction: column;
+
+    }
+    
+    .imgContainer{
+        flex: 2;    
+        width: 200px;
+        height: 150px;
+        @include sm{
+            flex: 1;
+            width: fit-content;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+    }
+    .textContainer{
+        flex: 3;
+        @include sm{
+            flex: 1;
+        }
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 10px;
+        img{
+            width: 20px;
+            height: 20px;
+        
+        }
+        .title{
+            font-size: 20px;
+            font-weight: 600;
+            color: #444;
+            transition: 0.6s;
+            display: flex;
+            span{
+                margin-left: 15rem;
+                color: #888;
+                font-weight: 500;
+                font-size: 15px;
+            }
+            &:hover{
+                color: black;
+                scale: 1.01;
+            }
+        }
+        .address{
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            color: #888;
+        }
+        .price{
+            background-color: #fadc8f;
+            width: max-content;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: 400;
+            font-size: 20px;
+        }   
+        .bottom{
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            @include lg{
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: start;
+                margin-top: 0.7rem;
+            }
+            .features{
+                display: flex;
+                gap: 100px;
+                font-size: 15px;
+                .feat{
+                    display: flex;
+                    align-items: center;
+                    gap: 7px;
+                    background-color: whitesmoke;
+                    border-radius: 5px;
+                    font-weight: bold;
+                    padding: 10px;
+                    width: 140px;
+                }
+            }
+            .icons{
+                display: flex;
+                gap: 20px;
+                @include lg{
+                    margin-top: 1rem;
+                }
+                .icon{
+                    border: 1px solid #999;
+                    padding: 2px 5px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        transition: 0.5s;
+                        &:hover{
+                            background-color: lightgray;
+                        }
+                }
+            }
+        }
+
+
+    }
+}

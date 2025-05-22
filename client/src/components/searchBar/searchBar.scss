@@ -1,0 +1,87 @@
+@import "../../response.scss";
+.searchBar{
+    .type{
+        
+        button{
+            padding: 16px 29px;
+            border: 1px solid #999;
+            background-color: white;
+            cursor: pointer;
+            border-bottom: none;
+            font-size: 20px;
+            text-transform: capitalize;
+            @include sm{
+                font-size: 15px;
+            }
+            &.active{
+                background-color: black;
+                color: white;
+            }
+            &:first-child{
+                border-top-left-radius: 5px;
+                border-right: none;
+            }
+            &:last-child{
+                border-top-right-radius: 5px;
+                border-right: none;
+            }
+        }
+    }
+
+
+    form{
+
+
+        @include sm{
+            flex-direction: column;
+
+        }
+        border: 1px solid #999;
+        @include sm{
+            border: none;
+        }
+        display: flex;
+        justify-content: space-between;
+        height: 64px;
+        gap: 5px;
+
+        .btnLink{
+            background-color: #fece51;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding: 15px;
+                button{
+                    cursor: pointer;
+                    border: none;
+                    padding: 10px;
+            img{
+                width: 24px;
+            }
+        }
+        }
+        input{
+            border: none;
+            padding: 0 10px;
+            width: 200px;
+            @include md{
+                padding: 0 5px;
+                &:nth-child(2),
+                &:nth-child(3){
+                    width: 140px;
+                }
+            }
+            @include md{
+                width: auto;
+                &:nth-child(2),
+                &:nth-child(3){
+                    width: auto;
+                }
+            }
+            @include sm{
+                padding: 20px;
+                border-bottom: 2px solid #888;
+            }
+        }
+    }
+}

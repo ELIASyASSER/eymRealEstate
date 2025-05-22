@@ -1,0 +1,60 @@
+@import "../../response.scss";
+.filters {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    h3 {
+        font-weight: 300;
+        font-size: 24px;
+    }
+
+    .item,
+    .location {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        label {
+            font-size: 13px;
+        }
+
+        input,
+        select {
+            width: 100px;
+            padding: 10px;
+            border: 1px solid #e8e8e8;
+            border-radius: 5px;
+
+            font-size: 14px;
+        }
+    }
+
+    .location {
+        input {
+            width: 100%;
+        }
+    }
+
+    .options {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 25px;
+
+        .btn {
+            width: 100px;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            background-color: #fece51;
+            img{
+                width: 24px;
+            }
+        }
+    }
+
+
+
+}

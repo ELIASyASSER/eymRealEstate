@@ -1,0 +1,31 @@
+*{
+
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+body{
+    font-family: "Lato" , sans-serif;
+    overflow: hidden;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+ul{
+    list-style: none;
+}
+::-webkit-scrollbar{
+    width: 10px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: gray;
+    width: 3px;
+}
+::-webkit-scrollbar-track{
+    background-color: white;
+}
+textarea{
+    resize: none;
+}

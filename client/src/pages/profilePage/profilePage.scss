@@ -1,0 +1,96 @@
+@import "../../response.scss";
+.profilePage{
+    display: flex;
+    height: 100%;
+    @include md{
+        flex-direction: column;
+        overflow: scroll;
+    }
+    .details{
+        // overflow-y: scroll;
+        flex: 3;
+        @include md{
+            flex: none;
+            height: fit-content;
+        }
+        padding-bottom: 50px;
+        .wrapper{
+            padding-right: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            
+            .title{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                h1{
+                    font-weight: 400;
+                    font-size: 28px;
+                }
+                button{
+                    border: none;
+                    background-color: #fece51;
+                    padding: 12px 24px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    font-size: 15px;
+                }
+            }
+
+            .info{
+                display: flex;
+                flex-direction: column;
+                gap: 22px;
+                button{
+                    padding: 12px;
+                    border: none;
+                    width: fit-content;
+                    background-color: #079d2c;
+                    font-weight: bold;
+                    color: white;
+                    cursor: pointer;
+                    font-size: 15px;
+
+                }
+                strong{
+                    margin-left: 1.4rem;
+                }
+                span{
+                    display: flex;
+                    align-items: center;
+                    
+                }
+                img{
+                    margin-left: 1.5rem;
+                    width: 64px;
+                    height: 64px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+            }
+        }
+        
+    }
+    
+
+    .chatContainer{
+        margin-bottom: 2rem;
+        @include md{
+            flex: none;
+            height: fit-content;
+        }
+        background-color: #fcf5f3;
+        flex: 2;
+        height: 100%;
+        
+        .wrapper{
+            padding: 0 20px;
+            height: 100%;
+        }
+
+
+    }
+
+
+}
