@@ -12,7 +12,7 @@ import "dotenv/config.js"
 const app = express()
 //middlewares
 app.use(cors({
-    origin:process.env.CLIENT_URL,
+    origin:[process.env.CLIENT_URL,"https://eym-real-estate-ra9u2hmaf-eliasyassers-projects.vercel.app"],
     credentials:true,
     
 }))
