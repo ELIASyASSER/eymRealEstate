@@ -56,7 +56,7 @@ Enjoy .... `http://localhost:5173`
     - React 
     - react-router-dom
     - react-leaflet for maps
-    - react-qull for reach text 
+    - react-qull for Rich text 
     - mongodb
     - Prisma Orm 
     - Context Api
