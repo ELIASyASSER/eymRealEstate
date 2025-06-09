@@ -30,12 +30,12 @@ for database i use prisma orm with mongoDb provider so make sure to create acc
 
 ## Table Of Content
 - [EymEstate](#eymestate)
-  - [Description](#description)
-  - [Table Of Content](#table-of-content)
-  - [Installation and Usage](#installation-and-usage)
-  - [Used Techs](#used-techs)
-    - [Live Demo](#live-demo)
-    - [Contribution](#contribution)
+- [Description](#description)
+- [Table Of Content](#table-of-content)
+- [Installation and Usage](#installation-and-usage)
+- [Used Techs](#used-techs)
+- [Live Demo](#live-demo)
+- [Contribution](#contribution)
 
 ## Installation and Usage
 after creating mongodb and cloudinary accounts like i mention on  [description](#description)
