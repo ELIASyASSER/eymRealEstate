@@ -2,121 +2,172 @@ import customError from "../errors/custom.error.js"
 import prisma from "../lib/prisma.js"
 
 
-const getChats = async(req,res,next)=>{
-    const tokenUserId = req.userId
+const addChat = async(req,res,next)=>{
+    const senderId = req.userId
+    const receiverId = req.body.receiverId
     try {
-        const chats =await prisma.chat.findMany({
+        const existingChat = await prisma.chat.findFirst({
             where:{
-                userIds:{
-                    hasSome:[tokenUserId]
+                AND:[
+                   { ParticipantUsers:{some:{userId:senderId}}},
+                    {ParticipantUsers:{some:{userId:receiverId}}},
+                    ]
+                
+            },
+            include:{
+                ParticipantUsers:{
+                    include:{
 
+                    user:{
+                        select:{
+
+                            avatar:true,username:true,id:true
+                        }
+                    }
                 }
+                
+            },
+            
+            messages:{
+                orderBy:{
+                    createdAt:"desc",
+                },
+                take:1 
+            }
             }
         })
-
-        for(let ch of chats){
-            let receiverId = ch.userIds.find((id)=>id != tokenUserId)
-            let item = await prisma.user.findUnique({
-                where:{
-                    id:receiverId
-                },
-                select:{
-                    id:true,
-                    avatar:true,
-                    username:true
-                }
-
-            })
-
-            ch.receiver = item;
-            
-        }
         
-        res.status(200).json(chats)
-    } catch (error) {
-        console.log(error.message)
-        next(new customError("Failed to get Chats"))
-    }
+        if(existingChat){
+            return res.status(200).json({message:"redirecting you to chats ...",chat:existingChat})
+        }
 
-
-}
-const getChat = async(req,res,next)=>{
-    const tokenUserId = req.userId
-    console.log(req.params)
-    try {
-        const chat = await prisma.chat.findFirst({
-            where:{
-                id:req.params.chatId,
-                userIds:{
-                    hasSome:[tokenUserId]
+        const chat = await prisma.chat.create({
+            data:{
+                ParticipantUsers:{
+                    create:[
+                    {
+                        user:{connect:{id:senderId}},
+                        role:"SENDER"
+                    
+                    },
+                    {
+                        user:{connect:{id:receiverId}},
+                        role:"RECEIVER"
+                    }
+                ]
                 }
             },
             include:{
+                ParticipantUsers:{
+                    include:{user:{
+                        select:{
+                            avatar:true,
+                            username:true,
+                            id:true
+                        }
+                    }}
+            }
+        }
+    })
+
+        res.status(201).json({message:"redirecting you to chat",chat})
+
+    } catch (error) {
+        console.log(error.message)
+        next(new customError(error.message ||"Failed to add chat"))
+    }
+}
+const getAllChats = async(req,res,next)=>{
+    const userId = req.userId
+    try {
+        
+        const chats = await prisma.participant.findMany({
+            where:{
+                userId:userId
+            },
+            include:{
+                chat:{
+                    include:{
+                        ParticipantUsers:{
+                            include:{
+                                user:{
+                                    select:{
+                                        avatar:true,
+                                        username:true,
+                                        id:true
+                                    }
+                                }
+                            }
+                        },
+                        messages:{
+                            orderBy:{createdAt:"desc"},
+                            take:1//get last message
+                        }
+                    }
+                },
+                
+            }
+        })
+        res.status(200).json(chats)
+        
+    } catch (error) {
+        console.log(error.message)
+        next(new customError(error.message ||"Failed to getAll Chats"))
+
+    }
+}
+
+const getChatById = async(req,res,next)=>{
+    const {chatId}= req.params
+    try {
+ 
+        
+
+        const chat  = await prisma.chat.findUnique({
+            where:{
+                id:chatId
+            },
+            include:{
+                ParticipantUsers:{
+                    include:{
+                        
+                        user:{
+                            select:{
+                                avatar:true,
+                                username:true
+                            }
+                        }
+                    },
+                    
+                },
                 messages:{
+                    include:{
+                        sender:{
+                            select:{
+                                avatar:true
+                            }
+                        }
+                    },
                     orderBy:{
                         createdAt:"asc"
                     }
                 }
             }
+            
+            
         })
-        await prisma.chat.update({
-            where:{
-                id:req.params.chatId,
-                
-            },
-            data:{
-                seenBy:{
-                    push:[tokenUserId]
-                }
-            }
-        })
+
+        res.json(chat)
+
         
-            res.status(200).json(chat)
-
     } catch (error) {
-        console.log(error.message)
-        next(new customError("Failed to get Chat"))
-    }
-}
-const addChat = async(req,res,next)=>{
-    const tokenUserId = req.userId
-    try {
-        const newChat = await prisma.chat.create({
-            data:{
-                userIds:[tokenUserId,req.body.recieverId]
-            }
-        })
-        res.status(200).json(newChat)
-
-    } catch (error) {
-        console.log(error.message)
-        next(new customError("Failed to add chat"))
-    }
-}
-const readChat = async(req,res,next)=>{
-    const tokenUserId = req.userId
-    console.log(req.params)
-    try {   
-        const updatedChat = await prisma.chat.update({
-            where:{
-                id:req.params.id,
-                userIds:{
-                    hasSome:[tokenUserId]
-                }
-            },
-            data:{
-                seenBy:{
-                    push:[tokenUserId]
-                }
-            }
-        })
-        res.status(200).json(updatedChat)
-
-    } catch (error) {
-        console.log(error.message)
-        next(new customError("Failed to read chat"))
+        next(error)
     }
 }
 
 
-export{getChats,getChat,readChat,addChat}
+export{
+    addChat,
+    getAllChats,
+    getChatById
+}

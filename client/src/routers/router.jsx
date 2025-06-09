@@ -11,8 +11,11 @@ import UpdatePage from "../pages/profileUpdatePage/page"
 import NewPostPage from "../pages/newPostPage/newPostPage"
 import { listPageLoader, profilePostsInfo, singlePageLoader } from "../lib/loaders"
 import Contact from "../components/contact/contact"
+import ChatPage from "../pages/chatPage/chat"
+import Chats from "../pages/chat/chats"
 const router = createBrowserRouter([
     {
+
         path:"/",
         element:<App/>,
         children:[
@@ -62,13 +65,22 @@ const router = createBrowserRouter([
             {
                 path:"/add",
                 element:<NewPostPage/>
+            },
+            {
+                path:"/chats",
+                element:<Chats/>
+            },
+            {
+                path:"/chats/:chatId",
+                element:<ChatPage/>
             }
         ]
     },
     {
         path:"*",
         element:<Error/>
-    }
+    },
+    
 ])
 
 export default router

@@ -1,12 +1,14 @@
 import { Outlet } from "react-router-dom"
 import Navbar from "./components/navbar/navbar"
 import "./layout.scss"
+import { ToastContainer } from "react-toastify"
 
 function App() {
 
   return (
     <div className="layout">
       <div className="navbar">
+        <ToastContainer/>
           <Navbar/>
       </div>
       <div className="content">

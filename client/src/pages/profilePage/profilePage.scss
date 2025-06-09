@@ -2,6 +2,7 @@
 .profilePage{
     display: flex;
     height: 100%;
+    
     @include md{
         flex-direction: column;
         overflow: scroll;
@@ -14,20 +15,24 @@
             height: fit-content;
         }
         padding-bottom: 50px;
+        .savedList{
+            padding: 30px;
+            font-weight: 400;
+        }
         .wrapper{
             padding-right: 50px;
             display: flex;
             flex-direction: column;
             gap: 50px;
             
-            .title{
+             .title{
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
                 h1{
                     font-weight: 400;
                     font-size: 28px;
-                }
+                }    
                 button{
                     border: none;
                     background-color: #fece51;

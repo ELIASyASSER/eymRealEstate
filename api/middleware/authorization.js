@@ -5,6 +5,7 @@ export const verifyToken = (req,res,next)=>{
             
     const token = req.cookies?.token
     if(!token){
+        
         return next( new Unathenticated("Not Authorized") )
     }
         jwt.verify(token,process.env.JWT_SECRET,async(err,payload)=>{

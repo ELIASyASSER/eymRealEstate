@@ -1,192 +1,192 @@
-@import "../../response.scss";
-nav{
-    
-    .user{
-        display: flex;
-        align-items: center;
-        font-weight: bold;
-        
-        @include sm{
-            span{
-                display: none;
-            }
-        }
-        .name{
-            margin-right: 1rem;
-            margin-left: 1rem;
-            
-        }
-        .profile{
-            padding: 12px 24px;
-            background-color: #fece51;
-            cursor: pointer;
-            border: none;
-            position: relative;
-            .notif{
-                position: absolute;
-                top: -20%;
-                right: -6px;
-                background-color: red;
-                color: white;
-                padding: 5px 8px;
-                border-radius: 50%;
-            }
+nav {
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+  position: relative;
+  z-index: 77;
+  background-color: #fff;
 
-        }
-        img{
-            width: 45px;
-            height: 45px;
-            object-fit: cover;
-            margin-right: 1rem;
-            border-radius: 50%;
-        }
-    }
-    a{
-        transition: all 0.5s ease;
-        &:hover{
-            scale: 1.05;
-        }
-        @include sm{
-            display: none;
-        }
-    }
-
-    height: 100px;
+  .left {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 30px;
 
-    .left{
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+      font-size: 20px;
+      text-decoration: none;
+      color: black;
 
-        flex: 3;
-
-
-        display: flex;
-        gap: 70px;
-        align-items: center;
-
-
-
-        span{
-
-            @include md{
-                display: none;
-            }
-            @include sm{
-                display: initial;
-            }
-        }
-        .logo{
-            font-weight: bold;
-            font-size: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            
-            
-            img{
-                width: 38px;
-            }
-        }
-        ul.list{
-            display: flex;
-
-            li{
-                margin-right: 20px;
-                    transition: all 0.5s ease;
-                    &:hover{
-                        scale: 1.05;
-                    }
-            }
-
-        }
+      img {
+        width: 30px;
+        height: 30px;
+      }
     }
-    .right{
-        flex: 2;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        background-color: #fcf5f3;
-        height: 100px;
-        position: relative;
-        z-index: 77;
-        @include md{
-            background-color: transparent;
-        }
-        .register{
-            background-color: #fece51;
-        }
-        a{
-            padding: 12px 24px;
-            margin: 20px;
-        }
-        .heart_icon{
-            margin-left: -3rem;
-            font-size: 30px;
-            cursor: pointer;
-            display: flex;
-            @include md{
-                margin-right: 0;
-            }
-        }
-    .menuIcon{
-        display: flex;
-        display: none;
-        z-index: 33;
-        img{
-            width: 42px;
-            border: 3px solid white;
-            height: 42px;
-            border-radius: 50%;
-            cursor: pointer;
-        }
 
+    .list {
+      display: flex;
+      gap: 20px;
 
-        @include sm{
-            display: initial;
+      li {
+        list-style: none;
+
+        a {
+          text-decoration: none;
+          color: black;
+          font-weight: 500;
+          transition: color 0.2s;
+
+          &:hover {
+            color: #555;
+          }
         }
+      }
     }
-    .menu{
+  }
 
-        background-color: black;
+  .right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    a {
+      text-decoration: none;
+      color: black;
+      font-weight: 500;
+      transition: color 0.2s;
+      padding: 15px 20px;
+      &:hover {
+        color: #555;
+      }
+
+      &.register {
+        background-color: #000;
         color: white;
-        height: 100vh;
+        padding: 15px 25px;
+        border-radius: 4px;
+        font-size: 14px;
 
-        position: fixed;
-        width: 50%;
-        top: 0;
+        &:hover {
+          background-color: #222;
+        }
+      }
+    }
 
-        right: -100%;
-        transition: 0.7s;
+    .user {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      position: relative;
+      .profile{
+        background-color: #fece51;
+        border-radius: 25px;
+        font-weight: bold;
+
+      }
+      img {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        object-fit: cover;
+
+      }
+      
+      .name {
+        font-weight: bold;
+        font-size: 24px;
+        
+      }
+
+      .heart_icon {
+        font-size: 38px;
+        color: crimson;
+
+        &:hover {
+          color: darkred;
+        }
+      }
+
+      .menuIcon {
+        display: none;
+        cursor: pointer;
+
+        img {
+          width: 45px;
+          height: 45px;
+        }
+      }
+    }
+
+    .menu {
+      display: none;
+      @media (max-width:767px) {
+        
+          &.sidebar {
+              display: none;
+        position: absolute;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        
-        align-items: center;
-        font-size: 28px;
+        top: 99%;
+        background-color: black;
+        border-radius: 20px;
+        padding: 20px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1001;
 
+        ul {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
 
-        .list li{
-            margin-bottom: 20px;
-            padding: 8px 6px;
-            border-bottom: 3px solid transparent;
-            transition: 0.5s;
-
-            &:hover{
-
-            border-bottom: 3px solid white;
-
+          li {
+              list-style: none;
+              padding: 10px 20px;
+              a {
+                  text-decoration: none;
+                  color: white;
+                  font-weight: 500;
+                  
+                  &:hover {
+                      color: #555;
+                    }
+                }
             }
         }
-        &.sidebar{
-            right: 0;
-        }
-        @include sm{
-            a{
-
-                display: initial;
-            }
-        }
-    }
     }
 }
+    }
+  }
+
+  // Responsive for mobile
+  @media (max-width: 768px) {
+    .left {
+      .list {
+        display: none;
+      }
+    }
+
+    .right {
+      .user {
+        .menuIcon {
+          display: block;
+        }
+
+        .profile,
+        .name {
+          display: none;
+        }
+      }
+
+      .menu.sidebar {
+        width: 200px;
+        right: 5%;
+      }
+    }
+  }
+}
+

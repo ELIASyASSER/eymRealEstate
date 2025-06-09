@@ -10,7 +10,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   
   <React.StrictMode>
     <AuthContextProvider>
-      <SocketContextProvider> 
+      <SocketContextProvider>
         <RouterProvider router={router}/>
       </SocketContextProvider>
     </AuthContextProvider>

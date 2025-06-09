@@ -4,7 +4,7 @@ import prisma from "../lib/prisma.js"
 import bcrypt from "bcrypt"
 const getUsers = async(req,res,next)=>{
     try {
-        const users =await prisma.user.findMany();
+        const users = await prisma.user.findMany();
         res.status(200).json(users)
 
     } catch (error) {
@@ -18,7 +18,7 @@ const getUser = async(req,res,next)=>{
     try {
     const user =await prisma.user.findUnique({
         where:{
-            id:id
+            id:id 
         }
     });
     if(!user){

@@ -1,17 +1,16 @@
 import express from "express"
-const app = express()
 import postRoute from "./routes/post.route.js"
 import authRoute from "./routes/auth.route.js"
 import isLogged from "./routes/tes.route.js"
 import Users from "./routes/user.route.js"
-import ChatRoute from "./routes/chat.route.js"
 import MessageRoute from "./routes/message.route.js"
+import chatRoute from "./routes/chat.route.js"
 import errorHandler from "./middleware/errors.js"
 import cookieParser from "cookie-parser"
 import cors from "cors"
 import "dotenv/config.js"
+const app = express()
 //middlewares
-import prisma from "./lib/prisma.js"
 app.use(cors({
     origin:process.env.CLIENT_URL,
     credentials:true
@@ -24,8 +23,7 @@ app.use("/api/auth",authRoute)
 app.use("/api/posts",postRoute)
 app.use("/api",isLogged)
 app.use("/api/users",Users)
-app.use("/api/posts",postRoute)
-app.use("/api/chats",ChatRoute)
+app.use("/api/chat",chatRoute)
 app.use("/api/message",MessageRoute)
 //error handling
 

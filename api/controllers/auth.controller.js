@@ -8,7 +8,7 @@ export const register =async (req,res,next)=>{
     try {
         
         //hash the password
-        const hashedPassword =await bcrypt.hash(password,10)
+        const hashedPassword = await bcrypt.hash(password,10)
     // create new user save it to db
     const newUser = await prisma.user.create({
         data:{
@@ -37,17 +37,19 @@ export const login = async(req,res,next)=>{
         })
 
         if(!user){ 
-            throw new Unathenticated("Invalid Credintials")
+            throw new Unathenticated("Invalid Credentials")
+            //now it will throw the error to the next() middleware will handle it 
         }
+
         //check if the password match
         const isPasswordCorrect = await bcrypt.compare(password,user.password)
         if(!isPasswordCorrect){
-            throw new Unathenticated("Invalid Credintials")
+            throw new Unathenticated("Invalid Credentials")
 
 
         }
         // create token and send it to user
-        const age = 1000*60*60*24*7
+        const age = 1000*60*60*24*7//7 days
         const token = jwt.sign({
             id:user.id,
             username:user.username,
@@ -56,11 +58,12 @@ export const login = async(req,res,next)=>{
         },process.env.JWT_SECRET,{expiresIn:age})
         
         const {password:userPassword,...userInfo} = user
-        
+        // to set cookie manually we can say res.setHeader("Set-Cookie","token=","value of the token") 
         res.status(200).cookie("token",token,{
             httpOnly:true,
-            // secure:true;
-            maxAge:age
+            secure:process.env.NODE_ENV =="production",
+            maxAge:age,
+            sameSite:process.env.NODE_ENV =="production"?"none":"lax"
         }).send(userInfo)
     } catch (error) {
         console.log(error.message)
@@ -70,5 +73,7 @@ export const login = async(req,res,next)=>{
 }
 export const logout = (req,res)=>{
 
-       res.clearCookie("token").status(200).send("logedOut Successfully")
+       res.clearCookie("token").
+       status(200).
+       send("loggedOut Successfully")
 }

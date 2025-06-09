@@ -6,6 +6,9 @@ import jwt from "jsonwebtoken"
 
 const getPosts = async(req,res,next)=>{
     const query = req.query
+    const page = parseInt(query.page||1)
+    const limit = 8 //8 posts //8 8 8 8 1
+    const skip = (page-1)*limit
     try {
         const posts  = await prisma.post.findMany({
             where:{
@@ -14,13 +17,30 @@ const getPosts = async(req,res,next)=>{
                 property:query.property||undefined,
                 price:{
                     gte:parseInt(query.minPrice)||0,
-                    lte:parseInt(query.maxPrice)||1000000000
+                    
+                    lte:parseInt(query.maxPrice)||100_000_0000
                 }
             },
+            skip,
+            take:limit,
+            orderBy:{
+                createdAt:"desc"//new first
+            },
+            include:{
+                user:{
+                    select:{
+                        avatar:true,
+                        username:true,
+                        id:true
+                    }
+                }
+            }
             
         })
-            res.status(200).json(posts)
-            
+        const totalPosts = await prisma.post.count({})
+        const hasMore = skip+posts.length<totalPosts
+            res.status(200).json({posts:posts,hasMore:hasMore})
+
     } catch (err) {
         console.log(err.message)
         next(err)
@@ -45,19 +65,30 @@ const getSinglePost = async(req,res,next)=>{
         if(token){
             jwt.verify(token,process.env.JWT_SECRET,async(err,payload)=>{
                 if(!err){
-                    const saved = await prisma.savedPosts.findUnique({
-                        where:{
-                            postId_userId:{
-                                postId:req.params.id,
-                                userId:payload.id
+                    
+                    try {
+                        
+                        const saved = await prisma.savedPosts.findUnique({
+                            where:{
+                                postId_userId:{
+                                    postId:req.params.id,
+                                    userId:payload.id
+                                }
                             }
-                        }
-                    })
-                    res.status(200).json({...post,isSaved:saved?true:false})
+                        })
+                        return res.status(200).json({...post,isSaved:saved?true:false})
+                    } catch (innerErr) {
+                        return next(innerErr)
+                    }
+                    
+                
+                }else{
+                    return res.status(200).json({...post,isSaved:false})
                 }
             })
+        }else{
+            return res.status(200).json({...post,isSaved:false})
         }
-        res.status(200).json({...post,isSaved:false})
     } catch (err) {
         console.log(err.message)
         next(err)
@@ -68,6 +99,7 @@ const addPost = async(req,res,next)=>{
     const tokenUserId = req.userId
     try {
         const newPost = await prisma.post.create({
+            
             data:{
                 ...body.postData,
                 userId:tokenUserId,
@@ -105,14 +137,14 @@ const deletePost = async(req,res,next)=>{
             }
         })
 
+        if(!post){
+            throw new NotFound("this post Not Found try again later")
+        }
         if(post.userId != tokenUserId){
             throw new forBidden("Not Authorized You can't delete these information")
         }
 
 
-        if(!post){
-            throw new NotFound("this post Not Found try again later")
-        }
         await prisma.postDetail.deleteMany({
             where:{postId:id}
         })
@@ -170,6 +202,15 @@ const profilePosts = async(req,res,next)=>{
         const userPosts = await prisma.post.findMany({
             where:{
             userId:tokenUserId
+        },
+        include:{
+            user:{
+                select:{
+                    id:true,
+                    username:true,
+                    avatar:true
+                }
+            }
         }
     })
     const saved = await prisma.savedPosts.findMany({
@@ -177,11 +218,24 @@ const profilePosts = async(req,res,next)=>{
             userId:tokenUserId
         },
         include:{
-            post:true
+            post:true,
+            user:{
+                select:{
+                    id:true,
+                    username:true,
+                    avatar:true
+                }
+            }
         }
     })
-    const savedPosts = saved.map((item)=>item.post)
+    const savedPosts = saved.map((item)=>{
+        return{
+                ...item.post,
+                user:item.user
+        }
+    })
     res.status(200).json({userPosts,savedPosts})
+
 } catch (error) {
     console.log(error)
     next(error)
@@ -189,7 +243,6 @@ const profilePosts = async(req,res,next)=>{
 }
 
 export {
-
     getPosts,
     getSinglePost,
     updatePost,
@@ -197,6 +250,4 @@ export {
     addPost,
     savePost,
     profilePosts
-
-
 }   

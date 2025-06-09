@@ -13,7 +13,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
+// when you make any change to your schema please run npx prisma db push 
 model Post {
 
   id                 String      @id @default(auto()) @map("_id") @db.ObjectId
@@ -49,6 +49,7 @@ enum property {
 }
 
 model PostDetail {
+  
   id         String  @id @default(auto()) @map("_id") @db.ObjectId()
   desc       String
   utility    String?
@@ -70,42 +71,42 @@ model savedPosts{
   createdAt  DateTime    @default(now())
   @@unique([postId,userId])
 }
-
 model User {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  email     String   @unique
-  username  String   @unique
-  password  String
-  avatar    String?
-  createdAt DateTime @default(now())
-  posts     Post[]
+  id         String     @id @default(auto()) @map("_id") @db.ObjectId
+  email      String     @unique
+  username   String     @unique
+  password   String
+  avatar     String?
+  createdAt  DateTime   @default(now())
+  posts      Post[]
   savedPosts savedPosts[]
-  chats Chat[] @relation(fields: [chatIds],references: [id])
-  chatIds String[] @db.ObjectId
-
+  ParticipantUsers participant[] 
+  messages Message[]
 }
-
-
-
-
-
 
 model Chat{
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  createdAt DateTime @default(now())
-  users User[] @relation(fields: [userIds],references: [id])
-  userIds String[] @db.ObjectId
-  seenBy String[] @db.ObjectId
-  messages Message[]
-  lastMessage  String?
+  id           String     @id @default(auto()) @map("_id") @db.ObjectId
+  ParticipantUsers participant[]
+  messages     Message[]  
+  createdAt    DateTime   @default(now())
+}
+model participant{
+   id     String @id @default(auto()) @map("_id") @db.ObjectId
+   user User @relation(fields: [userId],references: [id])
+   chat Chat @relation(fields: [chatId],references: [id])
+   chatId String @db.ObjectId
+   userId String @db.ObjectId
+   role String
+  @@unique([chatId,userId])
 }
 
-
-model Message{
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  createdAt DateTime @default(now())
-  text String
-  userId String
+model Message {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  text      String
+  sender User @relation(fields: [senderId],references: [id])
   chat Chat @relation(fields: [chatId],references: [id])
-  chatId String @db.ObjectId  
+  chatId    String   @db.ObjectId
+  senderId  String   @db.ObjectId
+  seen Boolean @default(false)
+  createdAt DateTime @default(now())
 }

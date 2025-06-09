@@ -23,7 +23,7 @@ const Filters = () => {
 
     return (
         <form className="filters">
-            <h3>Search Results For {searchParams.get("city")}</h3>
+            <h3>Search Results For {searchParams.get("location")}</h3>
             <div className="location">
                 <label htmlFor="city">Location</label>
                 <input

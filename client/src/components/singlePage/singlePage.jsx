@@ -7,6 +7,7 @@ import { toast, ToastContainer } from "react-toastify"
 import { useGlobalContext } from "../../context/authContext"
 import apiRequest from "../../lib/apiRequest"
 import { useEffect, useState } from "react"
+import { isAuthor } from "../../lib/isAuthor"
 
 
 const SinglePage = () => {
@@ -32,11 +33,37 @@ const SinglePage = () => {
             setSaved((prev)=>!prev)
             toast.success(res.data.message)
         } catch (error) {
-            console.log(error)
+            console.log(error.message)
             toast.error(error.message||"something went wrong while save the item")
             setSaved(prev=>!prev)
             
         }
+    }
+        const handleChat = async()=>{
+
+        const {userId:receiverId} = post
+        const {id:senderId} = currentUser
+        if(receiverId ==senderId){
+            toast.error("you can't chat with your self ")
+            return;
+        }
+        try {
+            const res = await apiRequest.post("/chat/createChat",{
+                receiverId:receiverId
+            })
+            const chatId = res.data.chat.id
+            toast.success(res.data.message)
+            navigate(`/chats/${chatId}`)
+        } catch (error) {
+            if(error?.response?.data?.message.includes("Unique constraint")){
+                toast.error("You can't chat with yourSelf")
+                return;
+            }else{
+                toast.error(error?.response?.data?.message||"failed to chat !")
+            }
+
+        }
+
     }
     
     
@@ -62,7 +89,7 @@ const SinglePage = () => {
                                 </div>
                             </div>
                             <div className="user">
-                                <img src={post.user.avatar} alt="user" />
+                                <img src={post.user.avatar||"/avatar.png"} alt="user" />
                                 <span>{post.user.username}</span>
                             </div>
                         </div>
@@ -118,21 +145,21 @@ const SinglePage = () => {
                 <p className="title">Nearly Places</p>
                 <div className="listHoriz">
                     <div className="feature">
-                        <img src="school.png" alt="" />
+                        <img src="/school.png" alt="school image" />
                         <div className="txtFeature">
                             <span>School</span>
                             <b>{post.postDetail.school>999?(post.postDetail.school)/1000+"km":post.postDetail.school+"M"} Away</b>
                         </div>
                     </div>
                     <div className="feature">
-                        <img src="bus.png" alt="" />
+                        <img src="/bus.png" alt="bus image  " />
                         <div className="txtFeature">
                             <span>Bus</span>
                             <b>{post.postDetail.bus>999?(post.postDetail.bus)/1000+"km":post.postDetail.bus+"M"} Away</b>
                         </div>
                     </div>
                     <div className="feature">
-                        <img src="restaurant.png" alt="" />
+                        <img src="/restaurant.png" alt="restaurant image" />
                         <div className="txtFeature">
                             <span>Restaurant</span>
                             <b>{post.postDetail.restaurant}M Away</b>
@@ -144,17 +171,19 @@ const SinglePage = () => {
                 <div className="mapContainer">
                     <Map item={[post]}/>
                 </div>
-                <div className="btns">
+                {!isAuthor(post?.userId)&&
+                <div className="btns" onClick={handleChat}>
                     <button>
-                        <img src="/chat.png" alt="img" />
+                        <img src="/chat.png" alt=" chat img" />
                         Send a Message
                     </button>
 
-                    <button onClick={handleSave} className={`${saved?"saved":""}`}>
-                        <img src="/save.png" alt="img" />
+                        <button onClick={handleSave} className={`${saved?"saved":""}`}>
+                        <img src="/save.png" alt=" save img" />
                         {saved?"place  saved ":"Save the Place"}
                     </button>
                 </div>
+                }
             </div>
         </main>
 

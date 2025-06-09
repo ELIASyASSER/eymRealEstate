@@ -1,39 +1,34 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { useContext ,createContext, useState, useEffect} from "react";
 import {io} from "socket.io-client"
-import { useGlobalContext } from "./authContext";
-
-const SocketContext = createContext()
+const SocketContext = createContext();
 
 export const SocketContextProvider = ({children})=>{
-    const {currentUser} = useGlobalContext()
+    const[socket,setSocket] = useState(null)
+    const[onlineUsers,setOnlineUsers] = useState(null)
+    
 
-    const [socket,setSocket] = useState(null)
 
     useEffect(() => {
-        setSocket(io("http://localhost:2000",{
-            withCredentials:true
-        }))
-
+        const newSocket =io("http://localhost:4000") 
+        setSocket(newSocket)
+        return ()=>{
+            newSocket.disconnect()
+        }
+        
     }, [])
 
-    useEffect(()=>{
-        if(socket){
-            currentUser&&socket?.emit("newUser",currentUser.id)
-        }
 
-    },[currentUser,socket])
-
-    const values = {
-        socket
+    const values={
+       socket,setSocket,
+       onlineUsers,
+       setOnlineUsers
     }
-
     return <SocketContext.Provider value={values}>
         {children}
     </SocketContext.Provider>
 }
 
-export const useGlobalSocketContext = ()=>{
 
+export const useGlobalSocketContext=()=> {
     return useContext(SocketContext)
-
 }

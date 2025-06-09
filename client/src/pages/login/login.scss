@@ -29,8 +29,8 @@
           font-weight: bold;
           cursor: pointer;
   
-          &:disabled{
-            background-color: #BED9D8;
+          &.disableBtn{
+            opacity: 0.5;
             cursor: not-allowed;
           }
         }

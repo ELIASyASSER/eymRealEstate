@@ -24,6 +24,7 @@ function Register() {
     setErr("")
     
     const data =new FormData(e.target);
+
     const username = data.get("username")
     const email = data.get("email")
     const password = data.get("password")
@@ -46,13 +47,14 @@ function Register() {
         const theErr = error.response?.data?.message ==`Invalid \`prisma.user.create()\` invocation: Unique constraint failed on the constraint: \`User_email_key\``?"user Name already exist":"failed to sign up try again username or email must be unique"
       
         setErr(theErr)
-      toast.error(theErr||"Failed To Sign Up")
+        toast.error(theErr||"Failed To Sign Up")
 
     }finally{
       setIsLoading(false)
     }
     
   }
+  
   return (
     
     <section className="register">

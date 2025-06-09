@@ -10,9 +10,7 @@ const Contact = () => {
           <div className="input-group">
             <input type="text" placeholder="Your Name" required />
           </div>
-          <div className="input-group">
-            <input type="email" placeholder="Your Email" required />
-          </div>
+        
           <div className="input-group">
             <textarea placeholder="Your Message" required></textarea>
           </div>

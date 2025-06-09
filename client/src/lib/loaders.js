@@ -9,28 +9,31 @@ export const singlePageLoader =async ({request,params})=>{
     }
 }
 export const profilePostsInfo = async({request,params})=>{
-    // return res.data
-    try {
-        
-        const[data1,data2] = await Promise.all([
-            apiRequest.get("/posts/profilePosts").then((res)=>res.data),
-            apiRequest.get("/chats").then((res)=>res.data)
-        ])
-        return{data1,data2}
+
+    try {    
+
+        const data = await new Promise((resolve,reject)=>{
+            apiRequest.get("/posts/profilePosts")
+            .then((res)=>resolve(res.data))
+            .catch((err)=>reject(err))
+        })
+        return data
 
     } catch (error) {
-        console.log(error.message,'debugger herer')
+        console.log(error.message,'debugger here')
         console.error("Error loading profile data:", error);
 
         if (error.response?.status === 401) {
             return redirect("/login"); // Redirect user if unauthorized
         }
 
+
     }
 }
 export const listPageLoader = async ({request,params})=>{
-
     const query = request.url.split("?")[1]
     const res = await apiRequest.get("/posts?"+query)
+    
     return res.data
 }
+

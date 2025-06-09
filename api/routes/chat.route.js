@@ -1,18 +1,18 @@
 import express from "express"
-import { 
-    getChats,
-    getChat,
-    addChat,
-    readChat
-} from "../controllers/chat.controller.js"
+
+const router = express.Router()
+import { addChat, getAllChats, getChatById} from "../controllers/chat.controller.js"
+
 
 import { verifyToken } from "../middleware/authorization.js"
-const router = express.Router()
 
-router.get("/",verifyToken,getChats)
-router.get("/:chatId",verifyToken,getChat)
-router.post("/",verifyToken,addChat)
-router.put("/read/:id",verifyToken,readChat)
+// router.get("/",verifyToken,getChats)
+// router.get("/:chatId",verifyToken,getChat)
+
+router.post("/createChat",verifyToken,addChat)
+router.get("/allChats",verifyToken,getAllChats)
+
+router.get("/:chatId",getChatById)
 
 
 

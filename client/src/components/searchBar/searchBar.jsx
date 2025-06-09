@@ -15,6 +15,7 @@ const SearchBar = () => {
     const switchType =(val)=>{
         setQuery((prev)=>({...prev,type:val}))
     }
+
     const handleChange = (e)=>{
         setQuery((prev)=>({...prev,[e.target.name]:e.target.value}))
     }
@@ -25,18 +26,18 @@ const SearchBar = () => {
             <div className="type">
                 
                 {
-                    types.map((btn,idx)=>{
-                        return  <button onClick={()=>switchType(btn)}  key={idx} className={`${query.type ==btn?"active":""}`}>{btn} </button>})
+                    types.map((btnType,idx)=>{
+                        return  <button onClick={()=>switchType(btnType)}  key={idx} className={`${query.type == btnType?"active":""}`}>{btnType} </button>})
                 }
 
             </div>
             <form>
-                <input type="text" name="city" placeholder="City" />
+                <input type="text" name="location" placeholder="City" onChange={handleChange} />
                 <input type="number" name="minPrice" placeholder="minPrice"  min={0} max={10000000} onChange={handleChange}/>
 
                 <input type="number" name="maxPrice" placeholder="maxPrice" min={0} max={10000000} onChange={handleChange}/>
 
-                <Link to={`/list?minPrice=${query.minPrice}&maxPrice=${query.maxPrice}&city=${query.location}&type=${query.type}`} className="btnLink">
+                <Link to={`/list?minPrice=${query.minPrice}&maxPrice=${query.maxPrice}&location=${query.location}&type=${query.type}`} className="btnLink">
                 {/* <button type="submit" onSubmit={(e)=>e.preventDefault()}> */}
                     <img src="/search.png" alt="search" />
                 {/* </button> */}

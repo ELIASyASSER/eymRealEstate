@@ -14,7 +14,7 @@ function NewPostPage() {
   const [images,setImages]  =useState([])
   const [done,setDone]  =useState(false)
     const navigate = useNavigate()
-
+    // console.log(err)
 
   //upload configuration
     const cloudName = 'djnnp85lv';
@@ -48,7 +48,7 @@ function NewPostPage() {
         'header', 'bold', 'italic', 'underline', 'strike', 'blockquote',
         'list', 'bullet', 'indent',
         'link', 'image'
-      ];
+    ];
 
 
 
@@ -66,7 +66,7 @@ function NewPostPage() {
         } = Object.fromEntries(data)
             if(images.length <4){
                 toast.error("please upload 4 images ")
-                return
+                return;
             }
 
         try {
@@ -99,11 +99,11 @@ function NewPostPage() {
             })
 
 
-            toast.success("Your Post Has been uploaded")
+            toast.success("Your Post Has been uploaded successfully")
             setDone(true)
-
+            console.log(res.data,'result')
             setTimeout(() => {
-                navigate("/"+res.data.id)
+                navigate("/getPost/"+res.data.id)
             }, 4000);
             
         } catch (error) {
@@ -215,7 +215,7 @@ function NewPostPage() {
                             <input min={0}  id="restaurant" name="restaurant" type="number" />
                         </div>
                         <button className={`sendButton ${done?"done":""}`} disabled={done} type="submit"> Add</button>
-                        {err&&<span>{err}</span>}
+                        {/* {err&&<span>{err}</span>} */}
                     </form>
                 </div>
             </div>
@@ -225,7 +225,7 @@ function NewPostPage() {
 
                     <CloudinaryUploadWidget
                     uwConfig={uwConfig} 
-                    setState={setImages} 
+                    setState={setImages}
                     setPublicId={setPublicId}
                     />
                 </div>

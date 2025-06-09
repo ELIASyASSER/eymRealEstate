@@ -17,7 +17,7 @@ const UpdatePage = () => {
 
   // Configuration
   const cloudName = 'djnnp85lv';
-  const uploadPreset = 'realestate';
+  const uploadPreset = 'realestate';//cloudinary/setting/upload-presets
 
   // State
   const [publicId, setPublicId] = useState('');
@@ -28,7 +28,7 @@ const UpdatePage = () => {
     cloudName,
     uploadPreset,
     multiple: false,
-    maxImageFileSize: 2000000,
+    maxImageFileSize: 2000_000,//2mb
     folder: 'estateFolder',
     eager:null
     // Uncomment and modify as needed:
@@ -61,7 +61,7 @@ const UpdatePage = () => {
 
       })
 
-      updateUser(res.data) 
+      updateUser(res.data)
       toast.success("information updated ")
       setTimeout(() => {
         navigate("/")
@@ -70,7 +70,7 @@ const UpdatePage = () => {
 
     } catch (error) {
       console.log(error)
-      setErr(error.response.data.message)
+      setErr(error.response.data?.message||"Failed to update user details")
 
     }
 

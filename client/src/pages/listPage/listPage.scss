@@ -14,7 +14,6 @@
         flex: 3;
         @include md{
             flex: none;
-            height: max-content;
         
         }
 
@@ -27,15 +26,26 @@
             overflow-y: scroll;
             padding-bottom: 50px;
         }
+        .loadMore{
+            border: none;
+            font-size: 22px;
+            color: rgb(7, 118, 198);
+            background-color: transparent;
+            text-decoration:underline;
+            cursor: pointer;
+        }
     }
     .mapContainer{
         background-color: #fcf5f3;
         flex: 2;
+        width: max-content;
+        height: 100vh;
+        width: 100%;
         @include md{
             flex: none;
+            display: none;
         
         }
-        height: 100%;
     }
 
 }

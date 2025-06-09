@@ -6,7 +6,7 @@ const List = ({posts}) => {
     <section className="list">
         {
             posts?.map((item,idx)=>{
-                return <Card key={idx} item={item}/>
+                return <Card key={idx} item={item} />
             })
         }
 

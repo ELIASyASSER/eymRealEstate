@@ -35,7 +35,7 @@ function HomePage() {
             <img src="/bg.png" alt="backgoround" />
         </div>
     </div>
-        <Clients/>
+        <Clients />
         <Services/>
         <Contact/>
   </>

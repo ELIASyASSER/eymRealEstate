@@ -7,6 +7,8 @@ const ProtectedRoute = ()=>{
     if(!currentUser){
         return <Navigate to={"/register"}/>
     }
+
+
     return (
             currentUser&&
             <div className="layout">
