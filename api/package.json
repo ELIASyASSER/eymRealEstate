@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon index",
-    "seed":"node seeds.js"
+    "seed":"node seeds.js",
+    "postinstall": "prisma generate" 
   },
   "keywords": [],
   "author": "",
