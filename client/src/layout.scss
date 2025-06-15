@@ -3,39 +3,24 @@
 .layout{
 
     height: 100vh;
-    max-width: 95%;
+    max-width: 96%;
 
-    
+    margin: auto;
     padding-left: 10px;
     padding-right: 10px;
     overflow-y: scroll;
     overflow-x: hidden;
     position: relative;
 
-                                    
-
-    @include lg{
-        max-width: 1258px;
-    }
-    @include md{
-        max-width:  970px;
-    }
-    
     @include sm{
-        max-width:  750px;
-    }
-    @include x-sm{
-        max-width:  250px;
-    }
+        width: 100%;
+    }                                
+
+    
 
     .content{
         min-height: calc(100vh - 100px);
         flex: 1;
-
-        // @include sm{
-        //     flex: 0;
-        // }
-        
         
     }
     footer{
