@@ -24,7 +24,9 @@
     }
     footer{
         margin-top: 1rem;
-        
+        @include sm{
+            margin-bottom: 2.8rem;
+        }
         background-color: #222;
         color: white;
         padding: 20px;
