@@ -181,8 +181,8 @@ const SinglePage = () => {
                     <Map item={[post]}/>
                 </div>
                 {!isAuthor(post?.userId)&&
-                <div className="btns" onClick={handleChat}>
-                    <button>
+                <div className="btns">
+                    <button  onClick={handleChat}>
                         <img src="/chat.png" alt=" chat img" />
                         Send a Message
                     </button>
