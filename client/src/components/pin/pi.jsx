@@ -7,7 +7,7 @@ return (
             <Popup>
 
                 <div className="popupContainer">
-                    <img src={ele.img} alt="" />
+                    <img src={ele.img} alt="marker" />
                     <div className="txtContainer">
                         <Link to={`/gePost/${ele.id}`} className="tit">{ele.title} </Link>
                         <span>{ele.bedroom} BedRoom</span>
