@@ -30,12 +30,12 @@ for database i use prisma orm with mongoDb provider so make sure to create acc
 
 ## Table Of Content
 - [EymEstate](#eymestate)
-  - [Description](#description)
-  - [Table Of Content](#table-of-content)
-  - [Installation and Usage](#installation-and-usage)
-  - [Used Techs](#used-techs)
-    - [Live Demo](#live-demo)
-    - [Contribution](#contribution)
+- [Description](#description)
+- [Table Of Content](#table-of-content)
+- [Installation and Usage](#installation-and-usage)
+- [Used Techs](#used-techs)
+- [Live Demo](#live-demo)
+- [Contribution](#contribution)
 
 
 
@@ -58,7 +58,7 @@ Enjoy .... `http://localhost:5173`
     - React 
     - react-router-dom
     - react-leaflet for maps
-    - react-qull for reach text 
+    - react-qull for Rich text 
     - mongodb
     - Prisma Orm 
     - Context Api
@@ -69,7 +69,8 @@ Enjoy .... `http://localhost:5173`
     - faker for seeding dummy data 
 ### Live Demo 
 [EymEstate](https://eym-real-estate-ui.vercel.app/)
+on the live demo you cant try chat feature as i did'nt deploy it if you want to try it without any problems setup it on your local as i explained
 ### Contribution
 🤝
-if there any issue or features leave an issue i will consider it [Issue Page](https://github.com/ELIASyASSER/book-store/issues)
-or make [pull request here ](https://github.com/ELIASyASSER/book-store/pulls)
+if there any issue or features leave an issue i will consider it [Issue Page](https://github.com/ELIASyASSER/eymRealEstate/issues)
+or make [pull request here ](https://github.com/ELIASyASSER/eymRealEstate/pulls)
