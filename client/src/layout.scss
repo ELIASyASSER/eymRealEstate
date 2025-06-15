@@ -2,7 +2,7 @@
 
 .layout{
 
-    height: 100vh;
+    min-height: 100vh;
     max-width: 96%;
     margin: auto;
     padding-left: 10px;
@@ -24,7 +24,7 @@
     }
     footer{
         margin-top: 1rem;
-        margin-bottom: 1.8rem;
+        
         background-color: #222;
         color: white;
         padding: 20px;
