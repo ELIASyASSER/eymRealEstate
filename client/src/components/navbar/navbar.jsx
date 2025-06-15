@@ -41,6 +41,7 @@ const Navbar = () => {
         </ul>
       </div>
 
+
       <div className="right">
         {user ? (
           <div className="user">
@@ -64,7 +65,7 @@ const Navbar = () => {
             </Link>
           </div>
         ) : (
-          <div>
+          <div className="sign">
             <Link to="/login">Sign In</Link>
             <Link to="/register" className="register">Sign Up</Link>
           </div>

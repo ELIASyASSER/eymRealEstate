@@ -17,8 +17,9 @@ function NewPostPage() {
     // console.log(err)
 
   //upload configuration
-    const cloudName = 'djnnp85lv';
-    const uploadPreset = 'realestate';
+   
+      const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUDENAME;
+      const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESETS;
   
     const uwConfig = {
         cloudName,
@@ -101,7 +102,7 @@ function NewPostPage() {
 
             toast.success("Your Post Has been uploaded successfully")
             setDone(true)
-            console.log(res.data,'result')
+            // console.log(res.data,'result')
             setTimeout(() => {
                 navigate("/getPost/"+res.data.id)
             }, 4000);

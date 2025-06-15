@@ -1,3 +1,4 @@
+@import "../../response.scss";
 nav {
   height: 100px;
   display: flex;
@@ -5,9 +6,10 @@ nav {
   align-items: center;
   padding: 0 5%;
   position: relative;
-  z-index: 77;
+  z-index: 77;  
   background-color: #fff;
-
+  
+  
   .left {
     display: flex;
     align-items: center;
@@ -50,10 +52,18 @@ nav {
   }
 
   .right {
+    
     display: flex;
     align-items: center;
     gap: 20px;
     position: relative;
+    .sign{
+      display: flex;
+      flex-direction: column;
+      @include sm{
+        flex-direction: row;
+      }
+    }
     a {
       text-decoration: none;
       color: black;
@@ -82,12 +92,14 @@ nav {
       align-items: center;
       gap: 15px;
       position: relative;
+      
       .profile{
         background-color: #fece51;
         border-radius: 25px;
         font-weight: bold;
 
       }
+      
       img {
         width: 45px;
         height: 45px;
@@ -164,6 +176,7 @@ nav {
 
   // Responsive for mobile
   @media (max-width: 768px) {
+    
     .left {
       .list {
         display: none;
@@ -172,6 +185,7 @@ nav {
 
     .right {
       .user {
+        
         .menuIcon {
           display: block;
         }

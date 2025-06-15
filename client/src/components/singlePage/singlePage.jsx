@@ -2,14 +2,14 @@ import Slider from "../slider/slider"
 // import { singlePostData, userData } from "../../lib/dummyData"
 import "./singlePage.scss"
 import Map from "../map/map"
-import { useLoaderData, useNavigate } from "react-router-dom"
+import { Link, useLoaderData, useNavigate } from "react-router-dom"
 import { toast, ToastContainer } from "react-toastify"
 import { useGlobalContext } from "../../context/authContext"
 import apiRequest from "../../lib/apiRequest"
 import { useEffect, useState } from "react"
 import { isAuthor } from "../../lib/isAuthor"
-
-
+import  {FaWhatsapp}from "react-icons/fa"
+import { FaPhone } from "react-icons/fa"
 const SinglePage = () => {
     const navigate = useNavigate()
     const post = useLoaderData()
@@ -95,6 +95,15 @@ const SinglePage = () => {
                         </div>
                         <div className="bottom">
                             {post.postDetail.desc}
+                        </div>
+
+                        <div style={{display:"flex",gap:"2rem",}}>
+                            <Link to={"https://whatsapp.com"} style={{background:" rgb(81, 237, 81)",display:"flex",justifyContent:"center",padding:"10px",borderRadius:"10px",marginBottom:"20px",flex:1}} >
+                             <FaWhatsapp style={{width:"40px",height:"40px"}} fill="white"/>
+                        </Link>
+                        <Link to={"https://whatsapp.com"} style={{background:" rgb(13, 131, 13)",display:"flex",justifyContent:"center",padding:"10px",borderRadius:"10px",marginBottom:"20px",flex:1}} >
+                          <FaPhone style={{width:"40px",height:"40px"}} fill="white"/>
+                        </Link>
                         </div>
                     </div>
             </div>

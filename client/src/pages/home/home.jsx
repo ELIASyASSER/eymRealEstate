@@ -8,6 +8,7 @@ function HomePage() {
   return (<>
     <div className="homePage">
         <div className="textContainer">
+
             <div className="wrapper">
                 <h1 className="txt">Find Your <span >Real Estate</span> & Get Your Dream Place</h1>
                 <p className="desc">

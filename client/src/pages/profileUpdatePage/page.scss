@@ -1,7 +1,7 @@
 section.profile {
     height: 100%;
     display: flex;
-  
+      
     .formContainer {
       flex: 3;
       height: 100%;
@@ -60,4 +60,8 @@ section.profile {
         width: 50%;
       }
     }
+  }
+  button.dis{
+    opacity: 0.4;
+    pointer-events: none;
   }

@@ -16,9 +16,9 @@ import CloudinaryUploadWidget from '../../components/CloudinaryUploadWidget/clou
 const UpdatePage = () => {
 
   // Configuration
-  const cloudName = 'djnnp85lv';
-  const uploadPreset = 'realestate';//cloudinary/setting/upload-presets
-
+  const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUDENAME;
+  const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESETS;//cloudinary/setting/upload-presets
+  
   // State
   const [publicId, setPublicId] = useState('');
   
@@ -46,10 +46,13 @@ const UpdatePage = () => {
   const navigate = useNavigate()
   const [err,setErr] = useState("")
   const {currentUser,updateUser} = useGlobalContext()
-  const [avatar,setAvatar] = useState([]) 
+  const [avatar,setAvatar] = useState([])
+  const [loading,setLoading] = useState(false)
+
   const handleSubmit = async(e)=>{
     e.preventDefault()
     setErr("")
+    setLoading(true)
     const data =new FormData(e.target)
     const {username,email,password} = Object.fromEntries(data)
     //or const username =data.get("username")
@@ -72,9 +75,12 @@ const UpdatePage = () => {
       console.log(error)
       setErr(error.response.data?.message||"Failed to update user details")
 
+    }finally{
+      setLoading(false)
     }
 
   }
+  
     return (
       <section className="profile">
       <ToastContainer/>
@@ -85,7 +91,7 @@ const UpdatePage = () => {
           <input name="username" type="text" placeholder="Username" required minLength={4} maxLength={20} defaultValue={currentUser.username} />
           <input name="email" type="email" placeholder="Email" defaultValue={currentUser.email}/>
           <input name="password" type="password" placeholder="Password"  minLength={4} maxLength={20}/>
-          <button disabled={false}>Update</button>
+          <button className={`${loading&&"dis"}`}>Update</button>
         {err&&<span>{err}</span>}
 
 
