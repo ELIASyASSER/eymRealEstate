@@ -5,7 +5,8 @@ section.list{
     gap: 50px;
     width: 90%;
     margin: auto;
-  @include md{
+
+  @include md{  
       width: 100%;
       margin: 0;
   }

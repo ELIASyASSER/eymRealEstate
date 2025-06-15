@@ -4,6 +4,7 @@
 
     height: 100vh;
     max-width: 1396px;
+
     margin-left: auto;
     margin-right: auto;
     padding-left: 10px;
@@ -22,13 +23,21 @@
     }
     
     @include sm{
-        max-width:  700px;
-
+        max-width:  730px;
+    }
+    @include x-sm{
+        max-width:  250px;
     }
 
     .content{
         min-height: calc(100vh - 100px);
         flex: 1;
+
+        // @include sm{
+        //     flex: 0;
+        // }
+        
+        
     }
     footer{
         margin-top: 1rem;

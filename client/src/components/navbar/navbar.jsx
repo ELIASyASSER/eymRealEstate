@@ -45,21 +45,18 @@ const Navbar = () => {
       <div className="right">
         {user ? (
           <div className="user">
-            <Link
-              to="/profile" 
-              
-              className="heart_icon"
-            >
-              <FaRegHeart />
-            </Link>
-
+            
+            <img src={imgUrl} alt="user" />
             <div className="menuIcon" onClick={handleSidebarToggle}>
               <img src="/menu.png" alt="menu" />
             </div>
-
-            <img src={imgUrl} alt="user" />
             <span className="name">{currentUser?.username || "Username"}</span>
-
+              <Link
+              to="/profile" 
+              className="heart_icon"
+              >
+              <FaRegHeart />
+            </Link>
             <Link to="/profile" className="profile">
               <span className="profile">Profile</span>
             </Link>

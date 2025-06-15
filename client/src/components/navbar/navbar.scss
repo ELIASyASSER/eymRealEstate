@@ -117,6 +117,9 @@ nav {
       .heart_icon {
         font-size: 38px;
         color: crimson;
+        @include x-sm{
+          display: none;
+        }
 
         &:hover {
           color: darkred;

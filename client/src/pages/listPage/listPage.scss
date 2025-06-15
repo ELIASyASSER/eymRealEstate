@@ -2,7 +2,11 @@
 .listPage{
 
     height: 100%;
+    width: 100%;
+    
     display: flex;
+    justify-content: center;
+    
     overflow-y: scroll;
     @include md{
         flex-direction: column;
@@ -13,8 +17,7 @@
 
         flex: 3;
         @include md{
-            flex: none;
-        
+            flex: none;       
         }
 
         .wrapper{
@@ -25,6 +28,8 @@
             gap: 50px;
             overflow-y: scroll;
             padding-bottom: 50px;
+            width: 100%;
+               
         }
         .loadMore{
             border: none;
