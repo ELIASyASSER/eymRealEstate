@@ -5,8 +5,7 @@
     height: 100vh;
     max-width: 1396px;
 
-    margin-left: auto;
-    margin-right: auto;
+    
     padding-left: 10px;
     padding-right: 10px;
     overflow-y: scroll;
@@ -19,11 +18,11 @@
         max-width: 1258px;
     }
     @include md{
-        max-width:  770px;
+        max-width:  970px;
     }
     
     @include sm{
-        max-width:  730px;
+        max-width:  750px;
     }
     @include x-sm{
         max-width:  250px;
