@@ -1,0 +1,43 @@
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #fbd370; // Tailwind's gray-800
+  color: black;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  img {
+    height: 2.25rem; // same as h-9
+  }
+
+  .admin-info {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem; // gap-5
+
+    p {
+      font-weight: bold;
+    }
+
+    .logout-link {
+      background-color: #4b5563; // Tailwind's gray-600
+      color: white;
+      padding: 0.5rem 0.75rem; // px-3 py-2
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: #111827; // gray-900
+      }
+
+      svg {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+  }
+}

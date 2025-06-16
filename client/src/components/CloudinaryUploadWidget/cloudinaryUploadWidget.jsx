@@ -55,7 +55,7 @@ const CloudinaryUploadWidget = ({ uwConfig, setPublicId ,setState}) => {
       className="cloudinary-button"
     
     >
-      Upload
+      Upload Images 
     </button>
   );
 };

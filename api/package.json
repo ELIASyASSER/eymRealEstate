@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon index",
-    "seed":"node seeds.js",
-    "postinstall": "prisma generate" 
+    "seed": "node seeds.js",
+    "postinstall": "prisma generate"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +25,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.13.0",
     "mongoose": "^8.9.6",
+    "nodemailer": "^7.0.3",
     "nodemon": "^3.1.9",
     "prisma": "^6.3.0"
   }

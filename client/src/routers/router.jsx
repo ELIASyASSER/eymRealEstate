@@ -13,6 +13,9 @@ import { listPageLoader, profilePostsInfo, singlePageLoader } from "../lib/loade
 import Contact from "../components/contact/contact"
 import ChatPage from "../pages/chatPage/chat"
 import Chats from "../pages/chat/chats"
+import { AdminContextProvider } from "../context/adminContext"
+import AdminRoute from "./adminRoute"
+import AdminLayout from "../admin/adminLayout/adminLayout"
 const router = createBrowserRouter([
     {
 
@@ -50,6 +53,7 @@ const router = createBrowserRouter([
         ]
     },
     {
+
         path:"/",
         element:<ProtectedRoute/>,
         children:[
@@ -76,6 +80,20 @@ const router = createBrowserRouter([
             }
         ]
     },
+    {
+        path:"/admin",
+        element:<AdminContextProvider>
+            <AdminRoute/>
+          </AdminContextProvider>,
+          children:[
+              {
+                  path:"",
+                  element:<AdminLayout/>,
+                  
+              }
+          ]
+    },
+    
     {
         path:"*",
         element:<Error/>

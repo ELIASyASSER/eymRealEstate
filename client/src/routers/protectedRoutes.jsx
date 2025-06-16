@@ -1,5 +1,5 @@
 import { Outlet, Navigate } from "react-router-dom"
-import { useGlobalContext } from "../context/authContext.jsx"
+import { AuthContextProvider, useGlobalContext } from "../context/authContext.jsx"
 import Navbar from "../components/navbar/navbar.jsx"
 
 const ProtectedRoute = ()=>{
@@ -10,15 +10,19 @@ const ProtectedRoute = ()=>{
 
 
     return (
+        <AuthContextProvider>
+            {
             currentUser&&
             <div className="layout">
             <div className="navbar">
                 <Navbar/>
             </div>
             <div className="content">
-            <Outlet/>
+                <Outlet/>
             </div>
         </div>
+        }
+            </AuthContextProvider>
   
     )
 }

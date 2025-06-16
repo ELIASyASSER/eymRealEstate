@@ -1,6 +1,7 @@
 import { useContext ,createContext, useState, useEffect} from "react";
 import apiRequest from "../lib/apiRequest";
 import { toast } from "react-toastify";
+import { useLocation } from "react-router-dom";
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({children})=>{
@@ -10,8 +11,7 @@ export const AuthContextProvider = ({children})=>{
     const updateUser =(data)=>{
         setCurrentUser(data)
     }
-    
-    
+
     useEffect(() => {
         localStorage.setItem("user",JSON.stringify(currentUser))
     }, [currentUser])
@@ -19,6 +19,7 @@ export const AuthContextProvider = ({children})=>{
 
     
     useEffect(()=>{
+
         
         const isLogged = async()=>{
          apiRequest(`/auth/is-logged`)
@@ -38,12 +39,10 @@ export const AuthContextProvider = ({children})=>{
         
                 
         }
-
-
-        isLogged()
+            isLogged()
     },[])
 
-    
+
     
     const values={
         currentUser,

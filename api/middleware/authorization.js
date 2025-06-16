@@ -11,7 +11,7 @@ export const verifyToken = (req,res,next)=>{
         jwt.verify(token,process.env.JWT_SECRET,async(err,payload)=>{
 
         if(err) {return next( new forBidden("token is not valid"))}
-        req.userId = payload.id
+        // req.userId = payload.id
         next() 
 
     })

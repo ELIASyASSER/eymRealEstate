@@ -223,7 +223,6 @@ function NewPostPage() {
             <div className="sideContainer">
                 <ToastContainer/>
                 <div className="upload">
-
                     <CloudinaryUploadWidget
                     uwConfig={uwConfig} 
                     setState={setImages}
@@ -235,6 +234,7 @@ function NewPostPage() {
                         return <img src={img} alt="photo" key={idx} />
                     })}
                 </div>
+
             </div>
         </div>
     );

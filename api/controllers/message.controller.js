@@ -14,8 +14,7 @@ const addMessage = async(req,res,next)=>{
                 text:txt,
                 chatId:chatId,
                 senderId:tokenUserId,
-                
-
+        
                 
             }
         })
