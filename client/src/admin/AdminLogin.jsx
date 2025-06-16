@@ -6,10 +6,8 @@ import { useAdminContext } from "../context/adminContext";
 
 const AdminLogin = () => {
   const {
-    isAdmin,
     setIsAdmin,
-    loading,
-    setLoading
+    
   } = useAdminContext()
 
   const usernameRef = useRef(null)
@@ -46,7 +44,6 @@ const AdminLogin = () => {
         toast.success(data.message)
       }
     } catch (error) {
-      console.log(error)
       toast.error(error?.response?.data?.message||"can't log in as admin")
     }
 

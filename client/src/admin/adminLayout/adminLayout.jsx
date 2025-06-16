@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { MdExitToApp } from "react-icons/md";
 import DashBoardBody from "../dashboardBody/dashboardBody";
-import "./AdminLayout.scss"; // ✅ import SCSS
+import "./adminLayout.scss"; // ✅ import SCSS
 
 const AdminLayout = () => {
   return (
