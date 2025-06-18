@@ -30,12 +30,12 @@ for database i use prisma orm with mongoDb provider so make sure to create acc
 
 ## Table Of Content
 - [EymEstate](#eymestate)
-- [Description](#description)
-- [Table Of Content](#table-of-content)
-- [Installation and Usage](#installation-and-usage)
-- [Used Techs](#used-techs)
-- [Live Demo](#live-demo)
-- [Contribution](#contribution)
+  - [Description](#description)
+  - [Table Of Content](#table-of-content)
+  - [Installation and Usage](#installation-and-usage)
+  - [Used Techs](#used-techs)
+    - [Live Demo](#live-demo)
+    - [Contribution](#contribution)
 
 
 
@@ -67,6 +67,10 @@ Enjoy .... `http://localhost:5173`
     - toast and timeago libraries
     - axios
     - faker for seeding dummy data 
+    - react-slick for slider
+    - slick-carousel  ...
+
+
 ### Live Demo 
 [EymEstate](https://eym-real-estate-ui.vercel.app/)
 on the live demo you cant try chat feature as i did'nt deploy it if you want to try it without any problems setup it on your local as i explained

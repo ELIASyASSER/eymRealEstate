@@ -85,19 +85,19 @@ const router = createBrowserRouter([
         element:<AdminContextProvider>
             <AdminRoute/>
           </AdminContextProvider>,
+          
           children:[
               {
                   path:"",
-                  element:<AdminLayout/>,
-                  
+                  element:<AdminLayout/>,        
               }
           ]
     },
     
-    {
-        path:"*",
-        element:<Error/>
-    },
+    // {
+    //     path:"*",
+    //     element:<Error/>
+    // },
     
 ])
 

@@ -79,7 +79,7 @@ const SinglePage = () => {
                                 <h1>{post.title}</h1>
                                 <div className="address">
                                     <div>
-                                        <img src="/pin.png" alt="pin" />
+                                        <img loading="lazy" src="/pin.png" alt="pin" />
                                         <span >{post.address}</span>
                                     </div> 
                                     <span className="city">{post.city}</span>
@@ -89,7 +89,7 @@ const SinglePage = () => {
                                 </div>
                             </div>
                             <div className="user">
-                                <img src={post.user.avatar||"/avatar.png"} alt="user" />
+                                <img loading="lazy" src={post.user.avatar||"/avatar.png"} alt="user" />
                                 <span>{post.user.username}</span>
                             </div>
                         </div>

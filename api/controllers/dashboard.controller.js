@@ -6,8 +6,12 @@ export const getAllUsers = async(req,res,next)=>{
                 username:true,
                 avatar:true,
                 email:true,
-                createdAt:true
-            },
+                createdAt:true,
+                posts:true
+
+            }
+            
+            ,
             orderBy:{
                 createdAt:"desc"
             }

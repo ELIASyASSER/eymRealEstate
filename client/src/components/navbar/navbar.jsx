@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./navbar.scss";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../../context/authContext";
@@ -7,13 +7,18 @@ import { client } from "../clients/clients";
 import { FaRegHeart } from "react-icons/fa";
 
 const Navbar = () => {
-  const { currentUser } = useGlobalContext();
+  
+  const { currentUser,setCurrentUser } = useGlobalContext();
   const imgUrl = currentUser?.avatar || logoAv;
   const [sideBar, setSideBar] = useState(false);
 
   const user = !!currentUser;
 
   const handleSidebarToggle = () => setSideBar((prev) => !prev);
+
+  useEffect(()=>{
+    setCurrentUser(currentUser)
+  },[currentUser])
 
   return (
     <nav>

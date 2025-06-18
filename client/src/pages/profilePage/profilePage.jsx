@@ -8,11 +8,10 @@ import { useEffect,useState } from "react"
 import Loader from "../../components/loader/loader"
 const ProfilePage = () => { 
     const [data,setData] = useState(null)
-    const navigate = useNavigate()
     const {currentUser,updateUser} = useGlobalContext()
     const postsInfo = useLoaderData()
     const [loading,setLoading] = useState(false)
-
+    const navigate = useNavigate()
     useEffect(() => {
         const getProfilePosts = async()=>{
             try {
@@ -29,24 +28,19 @@ const ProfilePage = () => {
         }
         getProfilePosts()
     }, [postsInfo])
-    const logout = async()=>{
-        try {
-
-            await apiRequest.post("/auth/logout")
-            updateUser(null)
-            toast.success(res.data)
-            setTimeout(() => {
-                navigate("/")
-            }, 1500);
-
-
-        } catch (error) {
-            console.log(error)
-            toast.error("failed to logout")
-
-        }
+    
+const logout = async()=>{
+    try {
+         await apiRequest("/auth/logout")
+        updateUser(null)
+        window.open("/")
+    } catch (error) {
+        
+        toast.error("failed to log out")
     }
-
+    
+    }
+        
     if(!currentUser){
         return null;
     }

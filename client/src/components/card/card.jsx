@@ -51,7 +51,7 @@ const Card = ({ item }) => {
         <div className="card">
             <Link to={`/getPost/${item.id}`}>
                 <div className="imgContainer">
-                    <img src={item.images[0]} alt="card Image" />
+                    <img loading="lazy" src={item.images[0]} alt="card Image" />
                 </div>
             </Link>
             <div className="textContainer">

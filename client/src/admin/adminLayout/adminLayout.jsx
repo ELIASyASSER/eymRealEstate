@@ -13,7 +13,7 @@ const AdminLayout = () => {
         <div className="admin-info">
           <p>Hi! Admin</p>
           <Link to="/" className="logout-link">
-            <MdExitToApp />
+            <MdExitToApp/>
           </Link>
         </div>
       </div>

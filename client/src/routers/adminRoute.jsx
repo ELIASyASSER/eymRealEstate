@@ -4,15 +4,15 @@ import Loader from "../components/loader/loader"
 import AdminLogin from "../admin/AdminLogin"
 
 const AdminRoute = () => {
-    const {isAdmin,loading,setLoading} = useAdminContext()
+    const {isAdmin,loading} = useAdminContext()
     
-    if(isAdmin){
-        return <Outlet/>
-    }
     if(loading){
         return <Loader/>
     }
     
+    if(isAdmin){
+        return <Outlet/>
+    }
     return <AdminLogin/>
     
 }

@@ -1,3 +1,4 @@
+import { ToastContainer } from "react-toastify"
 import {Clients} from "../../components/clients/clients"
 import Contact from "../../components/contact/contact"
 import SearchBar from "../../components/searchBar/searchBar"
@@ -6,7 +7,7 @@ import "./home.scss"
 
 function HomePage() {
   return (<>
-    <div className="homePage">
+        <div className="homePage">
         <div className="textContainer">
 
             <div className="wrapper">
@@ -35,7 +36,8 @@ function HomePage() {
         <div className="imgContainer">
             <img src="/bg.png" alt="backgoround" />
         </div>
-    </div>
+        </div>
+        
         <Clients />
         <Services/>
         <Contact/>

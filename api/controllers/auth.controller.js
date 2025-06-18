@@ -12,7 +12,7 @@ export const register =async (req,res,next)=>{
     // create new user save it to db
     const newUser = await prisma.user.create({
         data:{
-            username:username,
+            username:username, 
             email:email,
             password:hashedPassword
         }
@@ -72,7 +72,6 @@ export const login = async(req,res,next)=>{
     }
 }
 export const logout = (req,res)=>{
-
        res.clearCookie("token").
        status(200).
        send("loggedOut Successfully")

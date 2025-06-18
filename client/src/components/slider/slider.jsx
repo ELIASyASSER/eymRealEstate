@@ -20,7 +20,7 @@ const Slider = ({imgs}) => {
                 <img src="/arrow.png" alt="arrow" className="left" />
             </div>
             <div className="img">
-                <img src={imgs[imgIdx]} alt="image" />
+                <img loading="lazy" src={imgs[imgIdx]} alt="image" />
             </div>
             <div className="arrow" onClick={()=>{
                 if(imgIdx==imgs.length-1){
@@ -37,7 +37,7 @@ const Slider = ({imgs}) => {
             </div>
         </div>}
         <div className="bigImg">
-            <img src={imgs[0]} alt="big image" onClick={()=>setImgIdx(0)}/>
+            <img  loading="lazy" src={imgs[0]} alt="big image" onClick={()=>setImgIdx(0)}/>
         </div>
         <div className="otherImgs">
             {

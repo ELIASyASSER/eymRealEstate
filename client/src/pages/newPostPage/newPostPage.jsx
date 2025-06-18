@@ -7,6 +7,7 @@ import apiRequest from "../../lib/apiRequest";
 import CloudinaryUploadWidget from "../../components/CloudinaryUploadWidget/cloudinaryUploadWidget";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
+import { useGlobalContext } from "../../context/authContext";
 function NewPostPage() {
     const desc = useRef(null);
     const [err,setErr]  =useState("")
@@ -15,6 +16,7 @@ function NewPostPage() {
   const [done,setDone]  =useState(false)
     const navigate = useNavigate()
     // console.log(err)
+    const {currentUser} = useGlobalContext()
 
   //upload configuration
    
@@ -74,6 +76,7 @@ function NewPostPage() {
 
             const res = await apiRequest.post("/posts",{
                 postData:{
+                    userId:currentUser?.id,
                     title:title,
                     price:parseInt(price),
                     address:address,

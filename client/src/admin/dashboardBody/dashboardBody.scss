@@ -7,67 +7,8 @@
     margin-bottom: 2rem;
     color: #1f2937;
   }
-
-  &__users {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-  }
-}
-
-.user-card {
-  background-color: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
-
-  &:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    transform: translateY(-3px);
-  }
-
-  &__avatar {
-    width: 40px;
-    height: 40px;
-    flex-shrink: 0;
-    border-radius: 9999px;
-    object-fit: cover;
-    border: 1px solid #d1d5db;
-  }
-
-  &__info {
-    flex: 1;
-
-    h4 {
-      margin: 0;
-      font-size: 1rem;
-      font-weight: 600;
-      color: #111827;
-    }
-
-    p {
-      margin: 2px 0 0;
-      font-size: 0.875rem;
-      color: #6b7280;
-    }
-    .del{
-      text-align: left;
-      background-color: rgb(238, 233, 233);
-      border: none;
-      margin-top: 10px;
-      padding: 4px;
-      width: 60px;
-      height: 30px;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 20px;
-    }
+  .no__users{
+    font-size:2rem;
+    color: rgb(104, 5, 5);
   }
 }
