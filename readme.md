@@ -1,7 +1,7 @@
 # EymEstate
 
 ## Description
-mern stack website that you and multiple sellers can join and list their 
+a full stack website that you and multiple sellers can join and list their 
 
 properties 
 
