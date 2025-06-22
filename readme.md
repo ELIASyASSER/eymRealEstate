@@ -3,7 +3,7 @@
 ## Description
 a full stack website that you and multiple sellers can join and list their 
 
-properties 
+properties With admin panel to manage the website
 
 once you signup /login on profile page you create new post and fill post detail 
 
@@ -20,6 +20,8 @@ now back home copy your cloudname and upload preset the name you write
 i use `scss` for styling for state management i use `context api` it is pretty simple 
 
 for maps i use `react-leaflet`
+
+for contact section i use `nodemailer` for sending emails
 
 for authentication/authorization i use `jwt and cookies` for data fetching i use `axios` 
 
@@ -50,6 +52,8 @@ but now you can't see any posts so to generate dummy data
 there is a file inside `api` called `seeds.js`
 you should open 4'th terminal `cd api` run `npm run seed` or `node seeds.js` this will generate dummy data for you that you can see your website  
 
+to enable sending email in contact section read the .env.example how to setup nodemailer correctly
+
 finally run `npm run dev` in each directory `api` and `client` and `socket`
 
 Enjoy .... `http://localhost:5173` 
@@ -68,6 +72,7 @@ Enjoy .... `http://localhost:5173`
     - axios
     - faker for seeding dummy data 
     - react-slick for slider
+    - nodemailer
     - slick-carousel  ...
 
 
