@@ -11,6 +11,9 @@ import errorHandler from "./middleware/errors.js"
 import cookieParser from "cookie-parser"
 import cors from "cors"
 import "dotenv/config.js"
+import customError from "./errors/custom.error.js"
+import authenticateAdmin from "./middleware/authAdmin.js"
+import emailRoute  from "./routes/mail.route.js"
 const app = express()
 //middlewares
 app.use(cors({
@@ -23,17 +26,21 @@ app.use(express.json())
 
 //routes
 app.use("/api/auth",authRoute)
-app.use("/api/posts",postRoute)
+app.use("/api/posts",postRoute) 
 app.use("/api",isLogged)
 app.use("/api/users",Users)
 app.use("/api/chat",chatRoute)
 app.use("/api/message",MessageRoute)
 app.use("/api/admin",adminRoute)
-app.use("/api/dashboard",dashboardRoute)
-//error handling
+app.use("/api/dashboard",authenticateAdmin,dashboardRoute)
+// send email
+app.use("/api",emailRoute)
 
+//error handling
+ 
 app.use(errorHandler)
 
-app.listen(5000,async()=>{
+app.listen(5000,async()=>{ 
+    
     console.log('server is running')
 })

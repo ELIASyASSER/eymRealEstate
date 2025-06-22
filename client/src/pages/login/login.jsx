@@ -50,7 +50,7 @@ const handleSubmit =async(e)=>{
           <h1>Welcome back</h1>
           <input name="username" type="text" placeholder="Username" required minLength={4} maxLength={20} />
           <input name="password" type="password" placeholder="Password" minLength={4} maxLength={20}/>
-          <button className={`${isLoading?"disableBtn":""}`}>Login</button>
+          <button type="submit" className={`${isLoading?"disableBtn":""}`}>Login</button>
           
           {err&&
           <span>{err}</span>

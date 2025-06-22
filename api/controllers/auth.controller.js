@@ -2,11 +2,14 @@ import bcrypt from "bcrypt"
 import prisma from "../lib/prisma.js";
 import jwt from "jsonwebtoken"
 import Unathenticated from "../errors/unAuthenticated.js";
+import customError from "../errors/custom.error.js";
 
 export const register =async (req,res,next)=>{
     const {username,email,password} = req.body;
     try {
-        
+        if(!email || !username || !password){
+            throw new customError("Please Enter Your  Credentials")
+        }
         //hash the password
         const hashedPassword = await bcrypt.hash(password,10)
     // create new user save it to db

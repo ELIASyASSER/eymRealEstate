@@ -74,31 +74,5 @@ const updateUser = async(req,res,next)=>{
     }
 }
 
-const deleteUser =async(req,res,next)=>{
-    
-    const {id} = req.params
-    const tokenUserId = req.userId
 
-    
-
-    try {
-        
-        if(id !== tokenUserId){
-            throw new forBidden("Not Authorized You can't update information")
-        }
-
-        await prisma.user.delete({
-            where:{
-                id:id
-            }
-        })
-        res.status(200).json({message:"user deleted"})
-
-    } catch (error) {
-        console.log(error.message)
-        next(error)
-    }
-}
-
-
-export {getUsers,getUser,updateUser,deleteUser}
+export {getUsers,getUser,updateUser}

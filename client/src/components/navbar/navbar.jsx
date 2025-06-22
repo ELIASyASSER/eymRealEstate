@@ -13,9 +13,8 @@ const Navbar = () => {
   const [sideBar, setSideBar] = useState(false);
 
   const user = !!currentUser;
-
+console.log(user)
   const handleSidebarToggle = () => setSideBar((prev) => !prev);
-
   useEffect(()=>{
     setCurrentUser(currentUser)
   },[currentUser])
@@ -91,6 +90,7 @@ const Navbar = () => {
                 Agents
               </Link>
             </li>
+            
             {!user && (
               <>
                 <li><Link onClick={()=>setSideBar(false)} to="/login">Sign In</Link></li>

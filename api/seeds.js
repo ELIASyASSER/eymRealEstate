@@ -3,8 +3,18 @@ import { faker } from "@faker-js/faker";
 const properites = ["appartment","duplix","house","villa"]
 const types = ["buy","rent"]
 import { ObjectId } from "mongodb";
-// const ids = ["67a4b5f6fc23ccf48377e51d"]
-const generateRealEstateFakeData =(count = 30)=>{
+// const generateUsers = async(users = 10)=>{
+//     console.log('start generating users')
+//     try {
+//         for (let i = 0; i < users; i++) {
+            
+//         }
+//     } catch (error) {
+//         console.log("failed to generate users")
+//         console.log(error.message)
+//     }
+// }
+const generateRealEstateFakeData =(count = 10)=>{
     let items = []
     for (let i = 0; i < count; i++) {
         items.push({
@@ -19,7 +29,8 @@ const generateRealEstateFakeData =(count = 30)=>{
             longitude:faker.location.longitude({min:20,max:30}),
             images:Array.from({length:4},()=>faker.image.urlPicsumPhotos()),
             type:faker.helpers.arrayElement(types),
-            userId:new ObjectId(faker.helpers.arrayElement(["67a4b5f6fc23ccf48377e51d"])),
+            userId:new ObjectId(faker.helpers.arrayElement(["6852fb72c278b2f053606a95","6856c578d662f977c3995ed7","6856cda9d662f977c3995edb","6856fc8659b9c666ba61ee67"])),
+            //dont use these ids above insted generate users 
             postDetail:{
                 create:{
 
@@ -40,9 +51,7 @@ const generateRealEstateFakeData =(count = 30)=>{
 
 const seeds = async ()=>{
     try {
-        await prisma.postDetail.deleteMany();
-        await prisma.post.deleteMany();
-        console.log('database cleared ')
+        
         console.log('start seeding')
         const items = generateRealEstateFakeData()
         for (const item of items) {

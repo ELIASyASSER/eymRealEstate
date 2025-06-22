@@ -9,13 +9,14 @@ import Login from "../pages/login/login"
 import ProtectedRoute from "./protectedRoutes"
 import UpdatePage from "../pages/profileUpdatePage/page"
 import NewPostPage from "../pages/newPostPage/newPostPage"
-import { listPageLoader, profilePostsInfo, singlePageLoader } from "../lib/loaders"
+import {  profilePostsInfo, singlePageLoader } from "../lib/loaders"
 import Contact from "../components/contact/contact"
 import ChatPage from "../pages/chatPage/chat"
 import Chats from "../pages/chat/chats"
 import { AdminContextProvider } from "../context/adminContext"
 import AdminRoute from "./adminRoute"
 import AdminLayout from "../admin/adminLayout/adminLayout"
+import UserDetails from "../admin/userDetails/userDetails"
 const router = createBrowserRouter([
     {
 
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
             {
                 path:"/list",
                 element:<ListPage/>,
-                loader:listPageLoader
+                // loader:listPageLoader
             },
             {
                 path:"/getPost/:id",
@@ -89,8 +90,15 @@ const router = createBrowserRouter([
           children:[
               {
                   path:"",
-                  element:<AdminLayout/>,        
-              }
+                  element:<AdminLayout/>,
+
+              },
+              {
+                  path:"users/:userId",
+                  element:<UserDetails/>,
+
+              },
+
           ]
     },
     

@@ -1,9 +1,12 @@
-import { FaTrash } from "react-icons/fa"
+import {   FaTrash } from "react-icons/fa"
+import {SiGmail} from "react-icons/si"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import "./slider.scss";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useState } from "react";
+import { useAdminContext } from "../../../context/adminContext";
 
 
 let settings = {
@@ -42,9 +45,11 @@ let settings = {
 
 const SliderItems =({users})=>{
 
-    return <Slider {...settings}>
+const {state,dispatch} = useAdminContext()
+return <Slider {...settings}>
+    
         {users?.map((user) => (
-          <div className="user-card" key={user.username}>
+          <div className={`user-card ${state.openUserModal?"hide":""}`} key={user.username}>
             <img
               className="user-card__avatar"
               src={user.avatar || "/avatar.png"}
@@ -54,12 +59,26 @@ const SliderItems =({users})=>{
               <h4>{user.username}</h4>
               <p className="joins">Joined: {new Date(user.createdAt).toLocaleDateString()}</p>
               
-              {user.posts?.length ==0?<p className="no_posts">User does'nt have any posts</p>:<Link>{user?.username} creates  {user.posts?.length } posts</Link>}
-              <button className="del"><FaTrash fill="red" size={20}/></button>
+              {user.posts?.length ==0?<p className="no_posts">User does'nt have any posts</p>:<Link to={`users/${user.id}`}>{user?.username} creates  {user.posts?.length } posts</Link>}
+              <div className="btns">
+                <button className="del" onClick={()=>{
+                  dispatch({
+                    type:"OPEN_USER_MODAL",
+                    payload:{
+                      type:"user",
+                      userId:user?.id
+                    }
+                  })
+                  }}><FaTrash fill="red" size={20} /></button>
+                <Link className="del" to={`mailto:${user.email}`}><SiGmail fill="black" size={20}/></Link>
+              </div>
             </div>
           </div>
-        ))}
+        )
+        
+        )}
     </Slider>
     }
+    
       
 export default SliderItems 

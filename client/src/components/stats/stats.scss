@@ -1,0 +1,37 @@
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  background-color: #f8fafc; // soft gray background
+  border-radius: 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.stat-card {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.3s ease;
+  cursor: default;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    color: #2563eb; // vibrant blue
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 1.3rem;
+    color: #64748b; // slate gray
+    margin: 0;
+  }
+}

@@ -1,3 +1,4 @@
+import { makeTypedQueryFactory } from "@prisma/client/runtime/library"
 import forBidden from "../errors/forBidden.js"
 import NotFound from "../errors/notFound.js"
 import prisma from "../lib/prisma.js"
@@ -9,8 +10,12 @@ const getPosts = async(req,res,next)=>{
     const page = parseInt(query.page||1)
     const limit = 8 //8 posts //8 8 8 8 1
     const skip = (page-1)*limit
+    
+    
+
     try {
         const posts  = await prisma.post.findMany({
+    
             where:{
                 city:query.city||undefined,
                 type:query.type||undefined,
@@ -18,7 +23,7 @@ const getPosts = async(req,res,next)=>{
                 price:{
                     gte:parseInt(query.minPrice)||0,
                     
-                    lte:parseInt(query.maxPrice)||100_000_0000
+                    lte:parseInt(query.maxPrice)||100_000_0000_0000
                 }
             },
             skip,

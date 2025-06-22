@@ -30,10 +30,3 @@ export const profilePostsInfo = async({request,params})=>{
 
     }
 }
-export const listPageLoader = async ({request,params})=>{
-    const query = request.url.split("?")[1]
-    const res = await apiRequest.get("/posts?"+query)
-    
-    return res.data
-}
-

@@ -64,7 +64,7 @@ function Register() {
         <form onSubmit={handleSubmit}>
           <h1>Create an Account</h1>
           <input name="username" type="text" placeholder="Username" required minLength={4} maxLength={20} />
-          <input name="email" type="email" placeholder="Email" />
+          <input name="email" type="email" placeholder="Email" required />
           <input name="password" type="password" placeholder="Password" required minLength={4} maxLength={20}/>
           <button disabled={isLoading}>Register</button>
 

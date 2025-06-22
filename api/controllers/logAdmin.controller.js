@@ -9,7 +9,8 @@ const logAdmin = async(req,res,next)=>{
     if(username != process.env.ADMIN_USER_NAME || password != process.env.ADMIN_PASSWORD){
         return res.status(403).json({success:false,message:"Wrong Admin Credentials only admin can log in "})
     }
-    const adminToken = jwt.sign({username},process.env.JWT_SECRET_ADMIN,{expiresIn:'7d'})
+
+    const adminToken = jwt.sign({username,id: Date.now()},process.env.JWT_SECRET_ADMIN,{expiresIn:'7d'})
 
     return res.status(201).cookie("adminToken",adminToken,{
         httpOnly:true,
@@ -22,7 +23,8 @@ const logAdmin = async(req,res,next)=>{
         next(error)
     }
 }
-const isAdminAuth = async(_,res,next)=>{
+const isAdminAuth = async(req,res,next)=>{
+    
     try {
         res.status(200).json({success:true})
 

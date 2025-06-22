@@ -7,9 +7,9 @@ import Map from "../../components/map/map";
 import {  useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import apiRequest from "../../lib/apiRequest";
+import Loader from "../../components/loader/loader";
 
 const ListPage = () => {
-  // const data = listData;
   const [posts,setPosts] = useState([]);
   const[loading,setLoading] = useState(false);
   const [error,setError]  = useState(null);
@@ -43,7 +43,7 @@ const ListPage = () => {
   },[currentPage])
 
   if(loading){
-    return <div>Loading Please Wait ...</div>
+    return <Loader/>
   }
   return (
     <main className="listPage">
