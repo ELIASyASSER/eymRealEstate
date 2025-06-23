@@ -17,7 +17,7 @@ import emailRoute  from "./routes/mail.route.js"
 const app = express()
 //middlewares
 app.use(cors({
-    origin:process.env.CLIENT_URL,
+    origin:[process.env.CLIENT_URL,"https://eym-real-estate-yl9v.vercel.app"],
     credentials:true,
     
 }))
