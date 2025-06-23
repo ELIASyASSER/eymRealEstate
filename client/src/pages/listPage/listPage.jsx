@@ -10,12 +10,16 @@ import apiRequest from "../../lib/apiRequest";
 import Loader from "../../components/loader/loader";
 
 const ListPage = () => {
+  
+  
   const [posts,setPosts] = useState([]);
   const[loading,setLoading] = useState(false);
   const [error,setError]  = useState(null);
   const [hasMore,setHasMore] = useState(true)
   const [searchParams,setSearchParams] = useSearchParams();
   const currentPage = parseInt(searchParams.get("page"))||1
+  
+  
   useEffect(()=>{
     const fetchPosts = async()=>{
       try {

@@ -4,15 +4,13 @@ import Navbar from "../components/navbar/navbar.jsx"
 
 const ProtectedRoute = ()=>{
     const {currentUser} = useGlobalContext()
+    
     if(!currentUser){
         return <Navigate to={"/register"}/>
     }
 
 
     return (
-        <AuthContextProvider>
-            {
-            currentUser&&
             <div className="layout">
             <div className="navbar">
                 <Navbar/>
@@ -21,9 +19,6 @@ const ProtectedRoute = ()=>{
                 <Outlet/>
             </div>
         </div>
-        }
-            </AuthContextProvider>
-  
     )
 }
 export default ProtectedRoute

@@ -13,7 +13,7 @@ import { FaPhone } from "react-icons/fa"
 const SinglePage = () => {
     const navigate = useNavigate()
     const post = useLoaderData()
-    const [saved,setSaved] = useState(post.isSaved)
+    const [saved,setSaved] = useState(post?.isSaved)
     const {currentUser} = useGlobalContext()
     useEffect(() => {
       if(!currentUser){
@@ -65,7 +65,6 @@ const SinglePage = () => {
         }
 
     }
-    
     
     return (
     <main className="singlePage">

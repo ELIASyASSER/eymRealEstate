@@ -8,6 +8,7 @@ import CloudinaryUploadWidget from "../../components/CloudinaryUploadWidget/clou
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { useGlobalContext } from "../../context/authContext";
+import DOMPurify from "dompurify"
 function NewPostPage() {
     const desc = useRef(null);
     const [err,setErr]  =useState("")
@@ -71,7 +72,7 @@ function NewPostPage() {
                 toast.error("please upload 4 images ")
                 return;
             }
-
+             
         try {
 
             const res = await apiRequest.post("/posts",{
@@ -98,7 +99,7 @@ function NewPostPage() {
                     bus:parseInt(bus),
                     school:parseInt(school),
                     restaurant:parseInt(restaurant),
-                    desc:desc.current.getEditor().getText()
+                    desc:DOMPurify.sanitize(desc.current?.firstChild?.innerHTML)
                 }
             })
 

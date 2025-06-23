@@ -8,11 +8,11 @@ import { AuthContextProvider } from './context/authContext.jsx'
 import { SocketContextProvider } from './context/socketContext.jsx'
 ReactDOM.createRoot(document.getElementById('root')).render(
   
-  <React.StrictMode>
+  // <React.StrictMode>
     <AuthContextProvider>
       <SocketContextProvider>
         <RouterProvider router={router}/>
       </SocketContextProvider>
     </AuthContextProvider>
-  </React.StrictMode>,
+  // </React.StrictMode>,
 )

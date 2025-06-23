@@ -33,7 +33,8 @@ const logout = async()=>{
     try {
          await apiRequest("/auth/logout")
         updateUser(null)
-        window.location.href ="/"
+        // window.location.href ="/"
+        navigate("/login")
     } catch (error) {
         
         toast.error("failed to log out")

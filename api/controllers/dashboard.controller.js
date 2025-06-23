@@ -28,15 +28,22 @@ export const getAllUsers = async(req,res,next)=>{
     
 export const deleteUser =async(req,res,next)=>{
     const id = req.params.id
-    console.log(id)
+
     try {
+    
+        await prisma.post.deleteMany({
+            where:{
+                userId:id
+            }
+        })
         
         await prisma.user.delete({
             where:{
                 id:id
             }
         })
-        res.status(200).json({message:"user deleted"})
+        
+        res.clearCookie("token").status(200).json({message:"user deleted"})
 
     } catch (error) {
         console.log(error.message)

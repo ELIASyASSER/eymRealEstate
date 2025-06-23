@@ -14,6 +14,7 @@ const DeleteModal = () => {
             if(state.deleteType == 'user'){
               res = await apiRequest.delete(`/dashboard/deleteUser/${state.userId}`)
               toast.success(res.data.message,{delay:"1200"})
+
               
               return;
 

@@ -68,6 +68,7 @@ Enjoy .... `http://localhost:5173`
     - Context Api
     - Socket.io
     - Sass 
+    - dompurify for sanitizing
     - toast and timeago libraries
     - axios
     - faker for seeding dummy data 
