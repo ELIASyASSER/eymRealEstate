@@ -45,11 +45,10 @@ export const AuthContextProvider = ({children})=>{
                     LogoutUser()
                 }
             }
-        // window.addEventListener("focus",checkAuth)
-        // return ()=>{
-        //     window.removeEventListener("focus",checkAuth)
-        // }
-        checkAuth()
+        window.addEventListener("focus",checkAuth)
+        return ()=>{
+            window.removeEventListener("focus",checkAuth)
+        }
         },[currentUser])
 
 
