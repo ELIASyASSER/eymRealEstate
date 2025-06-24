@@ -32,12 +32,12 @@ for database i use prisma orm with mongoDb provider so make sure to create acc
 
 ## Table Of Content
 - [EymEstate](#eymestate)
-  - [Description](#description)
-  - [Table Of Content](#table-of-content)
-  - [Installation and Usage](#installation-and-usage)
-  - [Used Techs](#used-techs)
-    - [Live Demo](#live-demo)
-    - [Contribution](#contribution)
+- [Description](#description)
+- [Table Of Content](#table-of-content)
+- [Installation and Usage](#installation-and-usage)
+- [Used Techs](#used-techs)
+- [Live Demo](#live-demo)
+- [Contribution](#contribution)
 
 
 
@@ -50,6 +50,7 @@ you will find **.env.example** files please rename them to .env and fill the dat
 
 but now you can't see any posts so to generate dummy data 
 there is a file inside `api` called `seeds.js`
+but to seed you need user ids to generate users 
 you should open 4'th terminal `cd api` run `npm run seed` or `node seeds.js` this will generate dummy data for you that you can see your website  
 
 to enable sending email in contact section read the .env.example how to setup nodemailer correctly
