@@ -95,5 +95,6 @@ const getAllPosts = async()=>{
     }
 }
 
+
 // deleteAllUsers()
-deleteAllPosts()
+// deleteAllPosts()

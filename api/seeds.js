@@ -3,17 +3,17 @@ import { faker } from "@faker-js/faker";
 const properites = ["appartment","duplix","house","villa"]
 const types = ["buy","rent"]
 import { ObjectId } from "mongodb";
-// const generateUsers = async(users = 10)=>{
-//     console.log('start generating users')
-//     try {
-//         for (let i = 0; i < users; i++) {
+const generateUsers = async(users = 10)=>{
+    console.log('start generating users')
+    try {
+        for (let i = 0; i < users; i++) {
             
-//         }
-//     } catch (error) {
-//         console.log("failed to generate users")
-//         console.log(error.message)
-//     }
-// }
+        }
+    } catch (error) {
+        console.log("failed to generate users")
+        console.log(error.message)
+    }
+}
 const generateRealEstateFakeData =(count = 10)=>{
     let items = []
     for (let i = 0; i < count; i++) {
@@ -67,4 +67,5 @@ const seeds = async ()=>{
         await prisma.$disconnect()
     }
 }
+
 seeds()
