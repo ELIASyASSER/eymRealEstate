@@ -1,6 +1,12 @@
+@import "../../response.scss";
 .clients{
     display: flex;
     flex-direction: column;
+    height: fit-content;
+    @include sm{
+        height: 1200px;
+    }
+    background-color: red;
     h3{
         font-size: 32px;
         text-align: center;
