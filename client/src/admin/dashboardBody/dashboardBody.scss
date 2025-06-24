@@ -1,11 +1,19 @@
+@import "../../response.scss";
 .dashboard {
   background-color: black;
   color: white;
   padding: 2rem;
   min-height: 100vh;
- .container{
+   @include sm{
+    padding: 10px;
+   }
+
+  .container{
   width: 90%;
-  margin: 0 auto ;
+  margin: 0 auto;
+  @include sm{
+    width: 100%;
+  }
  }
   div.users{
     margin-top: 2rem;

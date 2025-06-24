@@ -57,9 +57,8 @@ const Card = ({ item }) => {
             <div className="textContainer">
                 <h2 className="title">
                     <Link to={`/getPost/${item.id}`}>{item.title}</Link>
-
-                        <span>{item.property}</span>
                 </h2>
+                <span>{item.property}</span>
                 <p className="address">
                     <img src="/pin.png" alt="pin" />
 

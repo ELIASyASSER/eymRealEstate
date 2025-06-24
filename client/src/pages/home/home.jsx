@@ -53,15 +53,15 @@ function HomePage() {
                     <SearchBar/>
                     <div className="boxes">
                         <div className="box">
-                            <Animated targetNumber="16" duration={1000} />
+                            <Animated targetNumber="16" duration={4000} />
                             <h2>Years Of Experience</h2>
                         </div>
                         <div className="box">
-                            <Animated targetNumber="7000" duration={2000}/>
+                            <Animated targetNumber="7000" duration={3000}/>
                             <h2>Properties sold</h2>
                         </div>
                         <div className="box">
-                            <Animated targetNumber="200" duration={2000}/>
+                            <Animated targetNumber="200" duration={4000}/>
                             <h2>Award Gained</h2>
                         </div>
                     </div>

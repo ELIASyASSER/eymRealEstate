@@ -8,13 +8,11 @@ nav {
   position: relative;
   z-index: 77;  
   background-color: #fff;
-  
-  
   .left {
     display: flex;
     align-items: center;
     gap: 30px;
- overflow: hidden;
+    overflow: hidden;
     .logo {
       display: flex;
       align-items: center;
@@ -23,7 +21,11 @@ nav {
       font-size: 20px;
       text-decoration: none;
       color: black;
-
+      @include x-sm{
+        span{
+          display: none;
+        }
+      }
       img {
         width: 30px;
         height: 30px;
@@ -33,7 +35,7 @@ nav {
     .list {
       display: flex;
       gap: 20px;
-
+    flex-wrap: wrap;
       li {
         list-style: none;
 

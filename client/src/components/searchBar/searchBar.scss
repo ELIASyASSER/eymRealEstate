@@ -30,24 +30,21 @@
 
 
     form{
-
-
-        @include sm{
-            flex-direction: column;
-
-        }
         border: 1px solid #999;
         @include sm{
             border: none;
         }
         display: flex;
         justify-content: space-between;
+        @include sm{
+            flex-direction: column;
+
+        }
         height: 64px;
         gap: 5px;
 
         .btnLink{
             background-color: #fece51;
-            flex: 1;
             display: flex;
             align-items: center;
             padding: 15px;
