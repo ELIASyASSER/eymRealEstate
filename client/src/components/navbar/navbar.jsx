@@ -28,10 +28,10 @@ console.log(user)
         </Link>
 
         <ul className="list">
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/chats">Chats</Link></li>
-          <li><Link to="/list">Properties</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
+          <li><Link to="/" onClick={()=>setSideBar(false)}>Home</Link></li>
+          <li><Link to="/chats" onClick={()=>setSideBar(false)}>Chats</Link></li>
+          <li><Link to="/list"onClick={()=>setSideBar(false)}>Properties</Link></li>
+          <li><Link to="/contact"onClick={()=>setSideBar(false)}>Contact</Link></li>
           <li>
             <Link
               to="/"
