@@ -1,5 +1,5 @@
 # EymEstate
-![./eymEstate.png](image )
+![image](./eymEstate.png)
 ## Description
 a full stack website that you and multiple sellers can join and list their 
 
