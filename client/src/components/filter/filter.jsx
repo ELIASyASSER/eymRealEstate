@@ -3,6 +3,7 @@ import "./filter.scss";
 import { useState } from "react";
 const Filters = () => {
     const [searchParams,setSearchParams] = useSearchParams()
+    
     const [query,setQuery] = useState({
         type:searchParams.get("type")||"",
         city:searchParams.get("city")|| "",

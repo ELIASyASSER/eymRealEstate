@@ -63,7 +63,7 @@ const ListPage = () => {
         })
       }
       
-      {!loading &&hasMore&&<button className="loadMore" onClick={()=>setSearchParams({page:currentPage+1})}>Load More</button>}
+      {!loading && hasMore &&<button className="loadMore" onClick={()=>setSearchParams({page:currentPage+1})}>Load More</button>}
 
       {posts.length ==0&& <h1>
         No Items Found 

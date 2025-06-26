@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import {useGlobalContext} from "../../context/authContext"
 import Loader from "../loader/loader";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 const Contact = () => {
   const {currentUser} = useGlobalContext()
   const [loading,setLoading] = useState(false)
@@ -55,10 +56,10 @@ const Contact = () => {
         <div className="social-media">
           <p>Or reach us on</p>
           <div className="social-icons">
-            <a href="#" className="facebook"><FaFacebookF /></a>
-            <a href="#" className="twitter"><FaTwitter /></a>
-            <a href="#" className="instagram"><FaInstagram /></a>
-            <a href="#" className="linkedin"><FaLinkedinIn /></a>
+            <Link to="#" className="facebook"><FaFacebookF /></Link>
+            <Link to="#" className="twitter"><FaTwitter /></Link>
+            <Link to="#" className="instagram"><FaInstagram /></Link>
+            <Link to="#" className="linkedin"><FaLinkedinIn /></Link>
           </div>
         </div>
       </div>

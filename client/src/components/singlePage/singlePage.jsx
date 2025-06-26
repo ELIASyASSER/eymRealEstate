@@ -15,46 +15,57 @@ const SinglePage = () => {
     const post = useLoaderData()
     const [saved,setSaved] = useState(post?.isSaved)
     const {currentUser} = useGlobalContext()
+    
     useEffect(() => {
+
       if(!currentUser){
         navigate("/login")
       }
     
-    
     }, [currentUser,navigate])
+
     if(!currentUser){
         return null
     }
+
     const handleSave = async()=>{
-        try {
-            const res = await apiRequest.post("/posts/save",{
+    
+    
+    try {
+        const res = await apiRequest.post("/posts/save",{
                 postId:post.id
-            })
-            setSaved((prev)=>!prev)
-            toast.success(res.data.message)
+        })
+        setSaved((prev)=>!prev)
+        toast.success(res.data.message)
         } catch (error) {
-            console.log(error.message)
-            toast.error(error.message||"something went wrong while save the item")
-            setSaved(prev=>!prev)
-            
+        console.log(error.message)
+        toast.error(error.message||"something went wrong while save the item")
+        setSaved(prev=>!prev)    
         }
+    
     }
+
         const handleChat = async()=>{
 
         const {userId:receiverId} = post
         const {id:senderId} = currentUser
-        if(receiverId ==senderId){
+        
+        if(receiverId == senderId){
             toast.error("you can't chat with your self ")
             return;
         }
         try {
+
             const res = await apiRequest.post("/chat/createChat",{
                 receiverId:receiverId
             })
             const chatId = res.data.chat.id
+
             toast.success(res.data.message)
             navigate(`/chats/${chatId}`)
+        
         } catch (error) {
+
             if(error?.response?.data?.message.includes("Unique constraint")){
                 toast.error("You can't chat with yourSelf")
                 return;
@@ -196,7 +207,6 @@ const SinglePage = () => {
         </main>
 
     </main>
-)
-}
+)}
 
 export default SinglePage

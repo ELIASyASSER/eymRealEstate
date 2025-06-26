@@ -38,9 +38,7 @@ const SearchBar = () => {
                 <input type="number" name="maxPrice" placeholder="maxPrice" min={0} max={10000000} onChange={handleChange}/>
 
                 <Link to={`/list?minPrice=${query.minPrice}&maxPrice=${query.maxPrice}&location=${query.location}&type=${query.type}`} className="btnLink">
-                {/* <button type="submit" onSubmit={(e)=>e.preventDefault()}> */}
                     <img src="/search.png" alt="search" />
-                {/* </button> */}
                 </Link>
             </form>
     </div>

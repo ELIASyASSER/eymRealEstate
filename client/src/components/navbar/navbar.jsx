@@ -13,7 +13,7 @@ const Navbar = () => {
   const [sideBar, setSideBar] = useState(false);
 
   const user = !!currentUser;
-console.log(user)
+// console.log(user)
   const handleSidebarToggle = () => setSideBar((prev) => !prev);
   useEffect(()=>{
     setCurrentUser(currentUser)

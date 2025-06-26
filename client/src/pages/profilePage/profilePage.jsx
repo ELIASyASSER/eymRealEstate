@@ -8,7 +8,7 @@ import { useEffect,useState } from "react"
 import Loader from "../../components/loader/loader"
 const ProfilePage = () => { 
     const [data,setData] = useState(null)
-    const {currentUser,setCurrentUser,updateUser} = useGlobalContext()
+    const {currentUser,updateUser} = useGlobalContext()
     const postsInfo = useLoaderData()
     const [loading,setLoading] = useState(false)
     const navigate = useNavigate()
@@ -27,6 +27,7 @@ const ProfilePage = () => {
             }
         }
         getProfilePosts()
+        
     }, [postsInfo])
     
 const logout = async()=>{

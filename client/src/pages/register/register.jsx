@@ -23,17 +23,18 @@ function Register() {
     setIsLoading(true)
     setErr("")
     
-    const data =new FormData(e.target);
-
+    const data = new FormData(e.target);
     const username = data.get("username")
+    
+
     const email = data.get("email")
     const password = data.get("password")
+    
     try {
       
       const res = await apiRequest.post(`/auth/register`,{
         username,email,password
       })
-
       toast.success(res)
 
       setTimeout(() => {

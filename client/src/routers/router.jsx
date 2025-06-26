@@ -1,4 +1,4 @@
-import {createBrowserRouter, Link} from "react-router-dom"
+import {createBrowserRouter} from "react-router-dom"
 import App from "../App"
 import ListPage from "../pages/listPage/listPage"
 import HomePage from "../pages/home/home"
@@ -11,19 +11,21 @@ import UpdatePage from "../pages/profileUpdatePage/page"
 import NewPostPage from "../pages/newPostPage/newPostPage"
 import {  profilePostsInfo, singlePageLoader } from "../lib/loaders"
 import Contact from "../components/contact/contact"
+
 import ChatPage from "../pages/chatPage/chat"
 import Chats from "../pages/chat/chats"
 import { AdminContextProvider } from "../context/adminContext"
+
 import AdminRoute from "./adminRoute"
 import AdminLayout from "../admin/adminLayout/adminLayout"
 import UserDetails from "../admin/userDetails/userDetails"
+
 const router = createBrowserRouter([
     {
 
         path:"/",
         element:<App/>,
         children:[
-
             {
                 path:"",
                 element:<HomePage/>
@@ -38,7 +40,6 @@ const router = createBrowserRouter([
                 element:<SinglePage/>,
                 loader:singlePageLoader
             },
-            
             {
                 path:"/register",
                 element:<Register/>
@@ -51,6 +52,8 @@ const router = createBrowserRouter([
                 path:"/contact",
                 element:<Contact/>
             }
+
+
         ]
     },
     {
@@ -83,6 +86,7 @@ const router = createBrowserRouter([
     },
     {
         path:"/admin",
+        
         element:<AdminContextProvider>
             <AdminRoute/>
           </AdminContextProvider>,

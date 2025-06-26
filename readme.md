@@ -17,7 +17,7 @@ after that set the presetname and choose siging mode :unsigned and save
 
 now back home copy your cloudname and upload preset the name you write
 
-i use `scss` for styling for state management i use `context api` it is pretty simple 
+i use `scss` for styling for state management i use `context api` with useReducer it is pretty simple 
 
 for maps i use `react-leaflet`
 
@@ -32,12 +32,12 @@ for database i use prisma orm with mongoDb provider so make sure to create acc
 
 ## Table Of Content
 - [EymEstate](#eymestate)
-- [Description](#description)
-- [Table Of Content](#table-of-content)
-- [Installation and Usage](#installation-and-usage)
-- [Used Techs](#used-techs)
-- [Live Demo](#live-demo)
-- [Contribution](#contribution)
+  - [Description](#description)
+  - [Table Of Content](#table-of-content)
+  - [Installation and Usage](#installation-and-usage)
+  - [Used Techs](#used-techs)
+    - [Live Demo](#live-demo)
+    - [Contribution](#contribution)
 
 
 
@@ -66,7 +66,7 @@ Enjoy .... `http://localhost:5173`
     - react-qull for Rich text 
     - mongodb
     - Prisma Orm 
-    - Context Api
+    - Context Api with useReducer
     - Socket.io
     - Sass 
     - dompurify for sanitizing

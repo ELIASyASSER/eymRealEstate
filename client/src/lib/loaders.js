@@ -1,5 +1,6 @@
 import { redirect } from "react-router-dom"
 import apiRequest from "./apiRequest"
+
 export const singlePageLoader =async ({request,params})=>{
     try {
         const res = await apiRequest("/posts/getPost/"+params.id)
@@ -8,15 +9,15 @@ export const singlePageLoader =async ({request,params})=>{
         console.log(error)
     }
 }
+
 export const profilePostsInfo = async({request,params})=>{
-
     try {    
-
         const data = await new Promise((resolve,reject)=>{
-            apiRequest.get("/posts/profilePosts")
-            .then((res)=>resolve(res.data))
-            .catch((err)=>reject(err))
-        })
+        apiRequest.get("/posts/profilePosts")
+        .then((res)=>resolve(res.data))
+        .catch((err)=>reject(err))
+        
+    })
         return data
 
     } catch (error) {
@@ -26,7 +27,6 @@ export const profilePostsInfo = async({request,params})=>{
         if (error.response?.status === 401) {
             return redirect("/login"); // Redirect user if unauthorized
         }
-
 
     }
 }
