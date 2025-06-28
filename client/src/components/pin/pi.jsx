@@ -9,7 +9,7 @@ return (
                 <div className="popupContainer">
                     <img src={ele.img} alt="marker" />
                     <div className="txtContainer">
-                        <Link to={`/gePost/${ele.id}`} className="tit">{ele.title} </Link>
+                        <Link to={`/getPost/${ele.id}`} className="tit">{ele.title} </Link>
                         <span>{ele.bedroom} BedRoom</span>
                         <b>${ele.price}</b>
                     </div>

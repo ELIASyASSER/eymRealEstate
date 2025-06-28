@@ -11,7 +11,7 @@ const authenticateAdmin = (req,res,next)=>{
             req.adminId = decodedToken.id
             next()
         }else{
-               return res.status(403).json({success:false,message:"You can't access this admin page "})
+            return res.status(403).json({success:false,message:"You can't access this admin page "})
         }
     } catch (error) { 
             console.log(error.message)
