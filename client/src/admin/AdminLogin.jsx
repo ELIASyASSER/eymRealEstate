@@ -34,7 +34,7 @@ const AdminLogin = () => {
     }
     try {
       const {data} = await apiRequest.post(`/admin/logAdmin`,{username,password})
-      console.log(data,'datafrom login admin')
+      // console.log(data,'data from login admin')
       if(!data.success){
         setIsAdmin(false)
         toast.error(data?.response?.data?.message||"something went wrong")
