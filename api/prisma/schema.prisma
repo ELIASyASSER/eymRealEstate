@@ -7,13 +7,12 @@
 generator client {
   provider = "prisma-client-js"
 }
-
 datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
-
 // when you make any change to your schema please run npx prisma db push 
+
 model Post {
 
   id                 String      @id @default(auto()) @map("_id") @db.ObjectId
@@ -36,18 +35,18 @@ model Post {
 
 }
 
+
+
 enum type {
   buy
   rent
 }
-
 enum property {
   appartment
   duplix
   house
   villa
 }
-
 model PostDetail {
   
   id         String  @id @default(auto()) @map("_id") @db.ObjectId()
@@ -83,7 +82,6 @@ model User {
   ParticipantUsers participant[] 
   messages Message[]
 }
-
 model Chat{
   id           String     @id @default(auto()) @map("_id") @db.ObjectId
   ParticipantUsers participant[]
@@ -99,7 +97,6 @@ model participant{
    role String
   @@unique([chatId,userId])
 }
-
 model Message {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   text      String

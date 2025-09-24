@@ -14,12 +14,19 @@ import "dotenv/config.js"
 import customError from "./errors/custom.error.js"
 import authenticateAdmin from "./middleware/authAdmin.js"
 import emailRoute  from "./routes/mail.route.js"
+import {createServer} from "http"
+import { Server } from "socket.io"
+//socket io
 const app = express()
+const httpServer = createServer(app)
+const io = new Server(httpServer,{
+    cors:{
+        origin:[process.env.CLIENT_URL,"https://eym-real-estate-yl9v.vercel.app"],
+    }
+})
 //middlewares
 app.use(cors({
-    origin:[process.env.CLIENT_URL,"https://eym-real-estate-yl9v.vercel.app"],
     credentials:true,
-    
 }))
 app.use(cookieParser())
 app.use(express.json())
@@ -39,9 +46,35 @@ app.use("/api",emailRoute)
 //error handling
  
 app.use(errorHandler)
+//socket logic
 
-app.listen(5000,async()=>{ 
+let onlineUsers={};
+const getUser = (id)=>{
+    return Object.keys(onlineUsers).find((key)=>onlineUsers[key] == id)
+}
+io.on("connection",(socket)=>{
+    socket.on("addUser",(userId)=>{
+        onlineUsers[socket.id] = userId      
+       io.emit("updateOnlineUsers",Object.values(onlineUsers))
+     
+    })
+
+    socket.on("sendMessage",(info)=>{
+        
+        io.to(getUser(info.receiverId)).emit("getMessage",info.data)
+        
+    }) 
+    socket.on("disconnect",()=>{
+        delete onlineUsers[socket.id]
+        io.emit("updateOnlineUsers",Object.values(onlineUsers))
+        
+    })
     
-    console.log('server is running')  
+})
 
+
+
+httpServer.listen(5000,async()=>{ 
+        console.log('server is running')  
+    
 })

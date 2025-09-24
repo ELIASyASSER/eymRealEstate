@@ -1,7 +1,6 @@
 const errorHandler = (err,req,res,next)=>{
-    
-    res.status(err.statusCode ||500).json({
-        message:err.message ||"Interval Server Error"
-    })
+    const state = err.statusCode || 500;
+    const msg =  err.message ||"Interval Server Error"
+    res.status(state).json({message:msg})
 }
 export default errorHandler

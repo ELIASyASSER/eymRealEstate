@@ -12,9 +12,8 @@ const getPosts = async(req,res,next)=>{
     const skip = (page-1)*limit
     
     
-
     try {
-        const posts  = await prisma.post.findMany({
+        const posts  =  await prisma.post.findMany({
     
             where:{
                 city:query.city||undefined,
@@ -22,7 +21,6 @@ const getPosts = async(req,res,next)=>{
                 property:query.property||undefined,
                 price:{
                     gte:parseInt(query.minPrice)||0,
-                    
                     lte:parseInt(query.maxPrice)||100_000_0000_0000
                 }
             },
@@ -52,7 +50,9 @@ const getPosts = async(req,res,next)=>{
     }
 }
 const getSinglePost = async(req,res,next)=>{
+
     const {id} = req.params
+
     try {
         const post  = await prisma.post.findUnique({
             where:{id:id},
@@ -65,14 +65,14 @@ const getSinglePost = async(req,res,next)=>{
                     }
                 }
             }
+
         })
+
         const token  = req.cookies?.token
         if(token){
             jwt.verify(token,process.env.JWT_SECRET,async(err,payload)=>{
                 if(!err){
-                    
                     try {
-                        
                         const saved = await prisma.savedPosts.findUnique({
                             where:{
                                 postId_userId:{
@@ -99,9 +99,12 @@ const getSinglePost = async(req,res,next)=>{
         next(err)
     }
 }
+
+
 const addPost = async(req,res,next)=>{
     const body = req.body
     const tokenUserId = req.userId
+    
     try {
         const newPost = await prisma.post.create({
             

@@ -19,7 +19,6 @@ import { AdminContextProvider } from "../context/adminContext"
 import AdminRoute from "./adminRoute"
 import AdminLayout from "../admin/adminLayout/adminLayout"
 import UserDetails from "../admin/userDetails/userDetails"
-import Loader from "../components/loader/loader"
 
 const router = createBrowserRouter([
     {

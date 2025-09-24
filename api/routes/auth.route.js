@@ -1,7 +1,7 @@
 import express from "express"
 import { login, logout, register } from "../controllers/auth.controller.js"
 import { verifyToken } from "../middleware/authorization.js"
-import Unathenticated from "../errors/unAuthenticated.js"
+// import Unathenticated from "../errors/unAuthenticated.js"
 const router = express.Router()
 
 router.post("/register",register)

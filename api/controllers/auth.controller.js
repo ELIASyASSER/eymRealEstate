@@ -13,9 +13,9 @@ export const register =async (req,res,next)=>{
         //hash the password
         const hashedPassword = await bcrypt.hash(password,10)
     // create new user save it to db
-    const newUser = await prisma.user.create({
+      await prisma.user.create({
         data:{
-            username:username, 
+            username:username,
             email:email,
             password:hashedPassword
         }
@@ -53,6 +53,7 @@ export const login = async(req,res,next)=>{
         }
         // create token and send it to user
         const age = 1000*60*60*24*7//7 days
+        
         const token = jwt.sign({
             id:user.id,
             username:user.username,
